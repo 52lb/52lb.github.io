@@ -1,0 +1,321 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="referrer" content="no-referrer" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="我的个人博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="小程序" />
+
+
+<meta name="description" content="概述前段时间公司在做一个小程序平台的时候，需要用到计算商家与用户之间的距离的功能，然后网上查了下，具体有两种方法，本文主要介绍这两种用法以及其利弊。
+问题微信小程序怎么计算用户离商家的距离;
+方..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    微信小程序-计算用户离商家的距离 |
+    
+    我的个人博客
+</title>
+
+<link rel="alternate" href="/atom.xml" title="我的个人博客" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+</head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/bgImg.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='露馅的番茄'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!-- <h2 class="text-hide">罗彪的个人博客</h2> -->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        我的个人博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/"><i class="fa "></i>
+                                分类</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/tags/"><i class="fa "></i>
+                                标签</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/aboutMe/"><i class="fa "></i>
+                                关于我</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="微信小程序-计算用户离商家的距离">
+            
+            微信小程序-计算用户离商家的距离
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2019/12/02</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>前段时间公司在做一个小程序平台的时候，需要用到计算商家与用户之间的距离的功能，然后网上查了下，具体有两种方法，本文主要介绍这两种用法以及其利弊。</p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>微信小程序怎么计算用户离商家的距离;</p>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>1.使用小程序的wx.getLocation 方法获取用户的经纬度,然后用已知的商家的经纬进行计算;   </p>
+<p>2.利用腾讯地图位置服务calculateDistance直接计算；</p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>1.使用小程序提供的获取用户位置信息的api，获取用户信息；</p>
+<p>2.获取后台返回的商家经纬度；以深圳北地铁站（22.610564,114.030313）为例；</p>
+<p>3.利用公式进行两点的经纬度计算；</p>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// 方法调用</span><br><span class="line">getDistance:function()&#123;</span><br><span class="line">    var that = this;</span><br><span class="line">    wx.getLocation(&#123;</span><br><span class="line">        type: &quot;wgs84&quot;,</span><br><span class="line">        success(res) &#123;</span><br><span class="line">            that.getDistance(res.latitude, res.longitude,22.610564,114.030313);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;,</span><br><span class="line">// 距离计算</span><br><span class="line">distance: function (la1, lo1, la2, lo2) &#123;</span><br><span class="line">    var La1 = la1 * Math.PI / 180.0;</span><br><span class="line">    var La2 = la2 * Math.PI / 180.0;</span><br><span class="line">    var La3 = La1 - La2;</span><br><span class="line">    var Lb3 = lo1 * Math.PI / 180.0 - lo2 * Math.PI / 180.0;</span><br><span class="line">    var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(La3 / 2), 2) + Math.cos(La1) * Math.cos(La2) * Math.pow(Math.sin(Lb3 / 2), 2)));</span><br><span class="line">    s = s * 6378.137;</span><br><span class="line">    s = Math.round(s * 10000) / 10000;</span><br><span class="line">    s = s.toFixed(2);</span><br><span class="line">    console.log(&quot;用户距离商家的距离为：&quot; + s);</span><br><span class="line">    return s;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<pre><code>用户距离商家的距离为：16.42</code></pre><h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><p>利用腾讯地图位置服务calculateDistance直接计算；</p>
+<p>1.前往<a href="https://lbs.qq.com/qqmap_wx_jssdk/index.html" target="_blank" rel="noopener">腾讯位置服务</a>注册登录，并根据步骤申请key：</p>
+<p>申请开发者密钥（key）：<a href="https://lbs.qq.com/console/key.html" target="_blank" rel="noopener">申请密钥</a></p>
+<p>开通webserviceAPI服务：控制台 -&gt; key管理 -&gt; 设置（使用该功能的key）-&gt; 勾选webserviceAPI -&gt; 保存</p>
+<p>(小程序SDK需要用到webserviceAPI的部分服务，所以使用该功能的KEY需要具备相应的权限)</p>
+<p>下载微信小程序JavaScriptSDK，<a href="http://3gimg.qq.com/lightmap/xcx/jssdk/qqmap-wx-jssdk1.2.zip" target="_blank" rel="noopener">微信小程序JavaScriptSDK v1.2</a></p>
+<p>代码：</p>
+<p>腾讯api文档：<a href="https://lbs.qq.com/qqmap_wx_jssdk/method-calculatedistance.html" target="_blank" rel="noopener">https://lbs.qq.com/qqmap_wx_jssdk/method-calculatedistance.html</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">// 引入SDK核心类</span><br><span class="line">var QQMapWX = require(&quot;xxx/qqmap-wx.js&quot;);</span><br><span class="line"> </span><br><span class="line">// 实例化API核心类</span><br><span class="line">var qqmapsdk = new QQMapWX(&#123;</span><br><span class="line">    key: &quot;开发密钥（key）&quot; // 必填</span><br><span class="line">&#125;);</span><br><span class="line"> </span><br><span class="line">//在Page(&#123;&#125;)中使用下列代码</span><br><span class="line">//事件触发，调用接口</span><br><span class="line">formSubmit(e)&#123;</span><br><span class="line">    var _this = this;</span><br><span class="line">    //调用距离计算接口</span><br><span class="line">    qqmapsdk.calculateDistance(&#123;</span><br><span class="line">        //mode: &quot;driving&quot;,//可选值：&quot;driving&quot;（驾车）、&quot;walking&quot;（步行），不填默认：&quot;walking&quot;,可不填</span><br><span class="line">        //from参数不填默认当前地址</span><br><span class="line">        //获取表单提交的经纬度并设置from和to参数（示例为string格式）</span><br><span class="line">        from: e.detail.value.start || &quot;&quot;, //若起点有数据则采用起点坐标，若为空默认当前地址</span><br><span class="line">        to: e.detail.value.dest, //终点坐标</span><br><span class="line">        success: function(res) &#123;//成功后的回调</span><br><span class="line">          console.log(res);</span><br><span class="line">          var res = res.result;</span><br><span class="line">          var dis = [];</span><br><span class="line">          for (var i = 0; i &lt; res.elements.length; i++) &#123;</span><br><span class="line">            dis.push(res.elements[i].distance); //将返回数据存入dis数组，</span><br><span class="line">          &#125;</span><br><span class="line">          _this.setData(&#123; //设置并更新distance数据</span><br><span class="line">            distance: dis</span><br><span class="line">          &#125;);</span><br><span class="line">        &#125;,</span><br><span class="line">        fail: function(error) &#123;</span><br><span class="line">          console.error(error);</span><br><span class="line">        &#125;,</span><br><span class="line">        complete: function(res) &#123;</span><br><span class="line">          console.log(res);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="优缺点比较"><a href="#优缺点比较" class="headerlink" title="优缺点比较"></a>优缺点比较</h2><p>方法一：</p>
+<p>优点：无需配置，只需两点之间经纬度，无使用次数限制；</p>
+<p>缺点：准确度有误差，直接计算的两点之间的距离，比腾讯地图查的距离明显要小；</p>
+<p>方法二：</p>
+<p>优点：距离精准，与腾讯地图误差较小；</p>
+<p>缺点：前期需要配置，且有使用限制，每天只能使用1万次，当然有钱的同学可以去购买配额-<a href="https://lbs.qq.com/dev/console/quota/manage；" target="_blank" rel="noopener">https://lbs.qq.com/dev/console/quota/manage；</a></p>
+<p>当然也可以写个判断，限额到了，就使用方法一；</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">罗彪的个人博客</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2019/12/04/%E5%89%8D%E7%AB%AF/2019/120401/" class="pre-post btn btn-default" title='nodejs-使用jsonwebtoken对管理后台进行token校验'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            nodejs-使用jsonwebtoken对管理后台进行token校验</span>
+    </a>
+    
+    
+    <a href="/2019/12/02/IT/2019/120202/" class="next-post btn btn-default" title='永久激活(破解) IntelliJ IDEA 方法'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            永久激活(破解) IntelliJ IDEA 方法</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#问题"><span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法"><span class="toc-text">方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#实现"><span class="toc-text">实现</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#方法一"><span class="toc-text">方法一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方法二"><span class="toc-text">方法二</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优缺点比较"><span class="toc-text">优缺点比较</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+</body>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="referrer" content="no-referrer" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="我的个人博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="nodejs" />
+
+
+<meta name="description" content="概述在使用vue做管理后台时，编辑文章页面需要使用到富文本编辑器，因此本文主要介绍如何在vue中添加wangeditor3编辑器
+一.背景由于在开发管理后台的时候编辑文章，轮播等可能会多个页面需..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    vue整合wangeditor3富文本编辑器 |
+    
+    我的个人博客
+</title>
+
+<link rel="alternate" href="/atom.xml" title="我的个人博客" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+</head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/bgImg.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='露馅的番茄'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!-- <h2 class="text-hide">罗彪的个人博客</h2> -->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        我的个人博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/"><i class="fa "></i>
+                                分类</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/tags/"><i class="fa "></i>
+                                标签</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/aboutMe/"><i class="fa "></i>
+                                关于我</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="vue整合wangeditor3富文本编辑器">
+            
+            vue整合wangeditor3富文本编辑器
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/nodejs/" rel="tag">nodejs</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2019/12/26</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在使用vue做管理后台时，编辑文章页面需要使用到富文本编辑器，因此本文主要介绍如何在vue中添加wangeditor3编辑器</p>
+<h2 id="一-背景"><a href="#一-背景" class="headerlink" title="一.背景"></a>一.背景</h2><p>由于在开发管理后台的时候编辑文章，轮播等可能会多个页面需要用到富文本编辑器，因此，我需要将wangeditor作为组件的形式整合到vue中使用；</p>
+<h2 id="二-实现步骤"><a href="#二-实现步骤" class="headerlink" title="二.实现步骤"></a>二.实现步骤</h2><h3 id="1-安装wangEditor"><a href="#1-安装wangEditor" class="headerlink" title="1.安装wangEditor"></a>1.安装wangEditor</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install wangeditor --save</span><br></pre></td></tr></table></figure>
+
+<h3 id="2-封装组件"><a href="#2-封装组件" class="headerlink" title="2.封装组件"></a>2.封装组件</h3><p>将wangEditor封装成组件wangeditor.vue（子组件）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div id=&quot;wangeditor&quot;&gt;</span><br><span class="line">    &lt;div ref=&quot;editorElem&quot; style=&quot;text-align:left&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">import E from &quot;wangeditor&quot;;</span><br><span class="line">export default &#123;</span><br><span class="line">  name: &quot;editorElem&quot;,</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      editor: null,</span><br><span class="line">      editorContent: &quot;&quot;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  props: [&quot;catchData&quot;, &quot;content&quot;], // 接收父组件的方法</span><br><span class="line">  watch: &#123;</span><br><span class="line">    content() &#123;</span><br><span class="line">      this.editor.txt.html(this.content);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  mounted() &#123;</span><br><span class="line">    this.editor = new E(this.$refs.editorElem);</span><br><span class="line">    this.editor.customConfig.onchange = html =&gt; &#123;</span><br><span class="line">      this.editorContent = html;</span><br><span class="line">      this.catchData(this.editorContent); // 把这个html通过catchData的方法传入父组件</span><br><span class="line">    &#125;;</span><br><span class="line">    this.editor.customConfig.uploadImgServer = &quot;你的上传图片的接口&quot;;</span><br><span class="line">    this.editor.customConfig.uploadFileName = &quot;你自定义的文件名&quot;;</span><br><span class="line">    this.editor.customConfig.menus = [&quot;undo&quot;,&quot;redo&quot;,&quot;bold&quot;,&quot;italic&quot;,&quot;underline&quot;,&quot;strikeThrough&quot;,&quot;link&quot;,&quot;quote&quot;,&quot;image&quot;,&quot;emoticon&quot;,&quot;table&quot;,&quot;video&quot;,&quot;head&quot;,&quot;fontSize&quot;,&quot;fontName&quot;,&quot;foreColor&quot;,&quot;backColor&quot;,&quot;list&quot;,&quot;justify&quot;,&quot;code&quot;];</span><br><span class="line">    // 下面是最重要的的方法</span><br><span class="line">    this.editor.customConfig.uploadImgHooks = &#123;</span><br><span class="line">      before: function(xhr, editor, files) &#123;</span><br><span class="line">        // 图片上传之前触发</span><br><span class="line">        // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象，files 是选择的图片文件</span><br><span class="line">        // 如果返回的结果是 &#123;prevent: true, msg: &apos;xxxx&apos;&#125; 则表示用户放弃上传</span><br><span class="line">        // return &#123;</span><br><span class="line">        //     prevent: true,</span><br><span class="line">        //     msg: &apos;放弃上传&apos;</span><br><span class="line">        // &#125;</span><br><span class="line">      &#125;,</span><br><span class="line">      success: function(xhr, editor, result) &#123;</span><br><span class="line">        // 图片上传并返回结果，图片插入成功之后触发</span><br><span class="line">        // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象，result 是服务器端返回的结果</span><br><span class="line">        this.imgUrl = Object.values(result.data).toString();</span><br><span class="line">      &#125;,</span><br><span class="line">      fail: function(xhr, editor, result) &#123;</span><br><span class="line">        // 图片上传并返回结果，但图片插入错误时触发</span><br><span class="line">        // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象，result 是服务器端返回的结果</span><br><span class="line">      &#125;,</span><br><span class="line">      error: function(xhr, editor) &#123;</span><br><span class="line">        // 图片上传出错时触发</span><br><span class="line">        // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象</span><br><span class="line">      &#125;,</span><br><span class="line">      timeout: function(xhr, editor) &#123;</span><br><span class="line">        // 图片上传超时时触发</span><br><span class="line">        // xhr 是 XMLHttpRequst 对象，editor 是编辑器对象</span><br><span class="line">      &#125;,</span><br><span class="line"></span><br><span class="line">      // 如果服务器端返回的不是 &#123;errno:0, data: [...]&#125; 这种格式，可使用该配置</span><br><span class="line">      // （但是，服务器端返回的必须是一个 JSON 格式字符串！！！否则会报错）</span><br><span class="line">      customInsert: function(insertImg, result, editor) &#123;</span><br><span class="line">        // 图片上传并返回结果，自定义插入图片的事件（而不是编辑器自动插入图片！！！）</span><br><span class="line">        // insertImg 是插入图片的函数，editor 是编辑器对象，result 是服务器端返回的结果</span><br><span class="line"></span><br><span class="line">        // 举例：假如上传图片成功后，服务器端返回的是 &#123;url:&apos;....&apos;&#125; 这种格式，即可这样插入图片：</span><br><span class="line">        let url = Object.values(result.data); // result.data就是服务器返回的图片名字和链接</span><br><span class="line">        JSON.stringify(url); // 在这里转成JSON格式</span><br><span class="line">        insertImg(url);</span><br><span class="line">        // result 必须是一个 JSON 格式字符串！！！否则报错</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    this.editor.create(); // 创建富文本实例</span><br><span class="line">    if (!this.content) &#123;</span><br><span class="line">      this.editor.txt.html(&quot;请输入编辑内容&quot;);</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">      this.editor.txt.html(this.content);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;style lang=&quot;scss&quot; rel=&quot;stylesheet/scss&quot;&gt;</span><br><span class="line">  #wangeditor &#123;</span><br><span class="line">    width: 100%;</span><br><span class="line">  &#125;</span><br><span class="line">  #wangeditor .w-e-toolbar &#123;</span><br><span class="line">    flex-wrap: wrap;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-在父组件中调用子组件"><a href="#3-在父组件中调用子组件" class="headerlink" title="3.在父组件中调用子组件"></a>3.在父组件中调用子组件</h3><p>①.引入子组件(注意改成自己的子组件存放路径)：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import wangeditor from &quot;../../components/wangeditor&quot;;</span><br></pre></td></tr></table></figure>
+
+<p>②.在components 中注册子组件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">components: &#123;</span><br><span class="line">    wangeditor: wangeditor</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>③.监听富文本编辑器输入内容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">catchData(value) &#123;</span><br><span class="line">    this.content = value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>步骤①，②，③完整代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">import wangeditor from &quot;../../components/wangeditor&quot;;</span><br><span class="line">export default &#123;</span><br><span class="line">  data() &#123;</span><br><span class="line">    return &#123;&#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    // 监听富文本编辑器</span><br><span class="line">    catchData(value) &#123;</span><br><span class="line">      this.content = value;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  components: &#123;</span><br><span class="line">    wangeditor: wangeditor</span><br><span class="line">  &#125;,</span><br><span class="line">  mounted() &#123;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>④.在模板中渲染：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;wangeditor :catchData=&quot;catchData&quot; :content=&quot;editForm.content&quot;&gt;&lt;/wangeditor&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在子组件中用props 项传了两个值，一个catchData函数，在methods中定义步骤③，用于在父组件中获取富文本中的内容，还有一个content作为初始化的数据（用于初始化从后台获取到的文章内容）；</p>
+<p>editForm.content的内容根据实际代码替换成后台返回的数据；</p>
+<h2 id="三-其他"><a href="#三-其他" class="headerlink" title="三.其他"></a>三.其他</h2><p>wangeditor官网：<a href="http://www.wangeditor.com" target="_blank" rel="noopener">http://www.wangeditor.com</a></p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">罗彪的个人博客</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2019/12/28/%E5%89%8D%E7%AB%AF/2019/122801/" class="pre-post btn btn-default" title='微信小程序-如何直接上传文件到腾讯云'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            微信小程序-如何直接上传文件到腾讯云</span>
+    </a>
+    
+    
+    <a href="/2019/12/20/%E5%90%8E%E7%AB%AF/2019/122001/" class="next-post btn btn-default" title='Java-JDK下载与安装详细步骤'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            Java-JDK下载与安装详细步骤</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一-背景"><span class="toc-text">一.背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-实现步骤"><span class="toc-text">二.实现步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-安装wangEditor"><span class="toc-text">1.安装wangEditor</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-封装组件"><span class="toc-text">2.封装组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-在父组件中调用子组件"><span class="toc-text">3.在父组件中调用子组件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-其他"><span class="toc-text">三.其他</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+</body>
+</html>

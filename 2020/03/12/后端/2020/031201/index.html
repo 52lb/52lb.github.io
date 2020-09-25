@@ -1,0 +1,327 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="referrer" content="no-referrer" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="我的个人博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="java" />
+
+
+<meta name="description" content="概述java学习笔记，教程:廖雪峰官方网站;
+一.Java的三个版本1.JavaSE：Standard Edition，标准版，包含标准的JVM和标准库；
+2.JavaEE：Enterprise..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    Java入坑01-Java入门简介 |
+    
+    我的个人博客
+</title>
+
+<link rel="alternate" href="/atom.xml" title="我的个人博客" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+</head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/bgImg.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='露馅的番茄'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!-- <h2 class="text-hide">罗彪的个人博客</h2> -->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        我的个人博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/"><i class="fa "></i>
+                                分类</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/tags/"><i class="fa "></i>
+                                标签</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/aboutMe/"><i class="fa "></i>
+                                关于我</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Java入坑01-Java入门简介">
+            
+            Java入坑01-Java入门简介
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/java/" rel="tag">java</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2020/03/12</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>java学习笔记，教程:廖雪峰官方网站;</p>
+<h3 id="一-Java的三个版本"><a href="#一-Java的三个版本" class="headerlink" title="一.Java的三个版本"></a>一.Java的三个版本</h3><p>1.JavaSE：Standard Edition，标准版，包含标准的JVM和标准库；</p>
+<p>2.JavaEE：Enterprise Edition，在Java SE的基础上加上了大量的API和库，以便方便开发Web应用、数据库、消息服务等；</p>
+<p>3.JavaME：Micro Edition，一个针对嵌入式设备的javaSE的简洁版；</p>
+<p>三者间的关系：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-9f7909c8726756e4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<h2 id="二-学习路线"><a href="#二-学习路线" class="headerlink" title="二.学习路线"></a>二.学习路线</h2><p>1.Java SE：掌握Java语言本身、Java核心开发技术以及Java标准库的使用；</p>
+<p>2.Java EE：Spring框架、数据库开发、分布式架构；</p>
+<h2 id="三-安装jdk"><a href="#三-安装jdk" class="headerlink" title="三.安装jdk"></a>三.安装jdk</h2><h3 id="什么是jdk，为什么要安装jdk"><a href="#什么是jdk，为什么要安装jdk" class="headerlink" title="什么是jdk，为什么要安装jdk"></a>什么是jdk，为什么要安装jdk</h3><p>因为Java程序必须运行在JVM之上，如果只有Java源码，要编译成Java字节码，就需要jdk，因为jdk除了包含jre(运行Java字节码的虚拟机)，还提供了编译器、调试器等开发工具。</p>
+<p>jdk安装步骤：<a href="https://www.btluo.com/news.html?articleId=55" target="_blank" rel="noopener">https://www.btluo.com/news.html?articleId=55</a></p>
+<h2 id="四-编写第一个java程序"><a href="#四-编写第一个java程序" class="headerlink" title="四.编写第一个java程序"></a>四.编写第一个java程序</h2><p>1.新建一个文件夹，新增一个.java格式的文件，如下图所示：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-d31a73a353647a7c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<p>2.打开编辑器，将刚刚新建的文件打开，输入我们的第一个java程序代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">public class Hello &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        System.out.println(&quot;Hello, world!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-641f2d8735101f46.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<p>在上面java程序中的：</p>
+<pre><code>public class Hello{...}</code></pre><p>这种写法被定义为class类，public表示这个类是公开的，class用来定义这是一个类，public、class都是Java的关键字，必须小写，Hello是类的名字，首字母H要大写。而花括号{}中间则是类的定义；</p>
+<p>在花括号{}中，Hello类定义了一个名为main的方法：</p>
+<pre><code>public static void main(String[] args) { ... }</code></pre><p>它是可执行的代码块，一个方法除了方法名main，还有用()括起来的方法参数，这里的main方法有一个参数，参数类型是String[]，参数名是args，public、static用来修饰方法，这里表示它是一个公开的静态方法，void是方法的返回类型，而花括号{}中间的就是方法的代码；方法里的代码每一行用;结束，这里只有一行代码，就是：</p>
+<pre><code>System.out.println(&quot;Hello, world!&quot;);</code></pre><p>意思是打印Hello, world!到控制台；</p>
+<p>Java规定，每个类定义的public static void main(String[] args)是Java程序的固定入口方法，因此，Java程序总是从main方法开始执行。</p>
+<p>3.运行java代码：</p>
+<p>Java源码本质上是一个文本文件，我们需要先用javac把Hello.java编译成字节码文件Hello.class，然后，用java命令执行这个字节码文件：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-8a82673cb5ed0dc8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<p>所以通过javac执行Hello.java文件，生成Hello.css文件</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-2ac5b278c293583f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<p>在执行以下命令,就能输出刚刚需要打印的Hello, world!了：</p>
+<pre><code>java Hello</code></pre><p><img src="https://upload-images.jianshu.io/upload_images/12858218-f33488ab4354cf28.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<p>注：</p>
+<p>一个Java源码只能定义一个public类型的class，并且class名称和文件名要完全一致；</p>
+<p>使用javac可以将.java源码编译成.class字节码；</p>
+<p>使用java可以运行一个已编译的Java程序，参数是类名。</p>
+<p>系列文章皆摘抄至：<a href="https://www.liaoxuefeng.com/wiki/1252599548343744" target="_blank" rel="noopener">廖雪峰的官方网站</a>  </p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">罗彪的个人博客</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2020/03/12/%E5%90%8E%E7%AB%AF/2020/031203/" class="pre-post btn btn-default" title='java入坑03-廖雪峰官网练习插件'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            java入坑03-廖雪峰官网练习插件</span>
+    </a>
+    
+    
+    <a href="/2020/01/06/%E5%89%8D%E7%AB%AF/2020/010601/" class="next-post btn btn-default" title='在vue中添加浏览器导航标题favicon图标'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            在vue中添加浏览器导航标题favicon图标</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一-Java的三个版本"><span class="toc-text">一.Java的三个版本</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-学习路线"><span class="toc-text">二.学习路线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-安装jdk"><span class="toc-text">三.安装jdk</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#什么是jdk，为什么要安装jdk"><span class="toc-text">什么是jdk，为什么要安装jdk</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-编写第一个java程序"><span class="toc-text">四.编写第一个java程序</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+</body>
+</html>

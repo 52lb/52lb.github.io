@@ -1,0 +1,321 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="referrer" content="no-referrer" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="我的个人博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="html" />
+
+
+<meta name="description" content="概述
+在用户使用我们的网站时，网站的加载速度对是否能留住用户有着致命的影响，因此本文主要介绍部分优化页面的方法
+
+正文1. 尽量减少 HTTP 请求作为第一条，可能也是最重要的一条。根据数据分析..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    web前端页面优化方法 |
+    
+    我的个人博客
+</title>
+
+<link rel="alternate" href="/atom.xml" title="我的个人博客" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+</head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/bgImg.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='露馅的番茄'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!-- <h2 class="text-hide">罗彪的个人博客</h2> -->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        我的个人博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/"><i class="fa "></i>
+                                分类</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/tags/"><i class="fa "></i>
+                                标签</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/aboutMe/"><i class="fa "></i>
+                                关于我</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="web前端页面优化方法">
+            
+            web前端页面优化方法
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/html/" rel="tag">html</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2018/10/07</span>
+    </span>
+    
+    
+</div>
+        
+        
+        <p class="fa fa-exclamation-triangle warning">
+            本文于<strong>
+                719</strong>
+            天之前发表，文中内容可能已经过时。
+        </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
+<li>在用户使用我们的网站时，网站的加载速度对是否能留住用户有着致命的影响，因此本文主要介绍部分优化页面的方法</li>
+</ul>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="1-尽量减少-HTTP-请求"><a href="#1-尽量减少-HTTP-请求" class="headerlink" title="1. 尽量减少 HTTP 请求"></a>1. 尽量减少 HTTP 请求</h3><p>作为第一条，可能也是最重要的一条。根据数据分析表明，有很大一部分用户访问会因为这一条而获得更好的访问体验。常见的减少 HTTP 请求的方法：</p>
+<pre><code>1) 合并文件，比如把多个 CSS 文件合成一个；Gulp,Grunt 构建工具: 合并CSS, 合并JS, CSS&amp;JS压缩；
+
+2) CSS Sprites 雪碧图。利用 CSS background 相关元素进行背景图绝对定位；
+
+3) 图片用base64 与 延迟加载；</code></pre><h3 id="2-减少-DNS-查找："><a href="#2-减少-DNS-查找：" class="headerlink" title="2 减少 DNS 查找："></a>2 减少 DNS 查找：</h3><pre><code>1）. 使用本地资源 ；
+
+2）.使用加速器CDN；</code></pre><h3 id="3-避免重定向；"><a href="#3-避免重定向；" class="headerlink" title="3. 避免重定向；"></a>3. 避免重定向；</h3><p>不是绝对的避免，尽量减少。另外，应该注意一些不必要的重定向。</p>
+<h3 id="4-Ajax可缓存："><a href="#4-Ajax可缓存：" class="headerlink" title="4 .Ajax可缓存："></a>4 .Ajax可缓存：</h3><p>尽量让Ajax可缓存，响应时间对 Ajax 来说至关重要，否则用户体验绝对好不到哪里去。</p>
+<h3 id="5-延迟载入组件："><a href="#5-延迟载入组件：" class="headerlink" title="5. 延迟载入组件："></a>5. 延迟载入组件：</h3><p>lazyload.js；</p>
+<h3 id="6-预载入组件："><a href="#6-预载入组件：" class="headerlink" title="6. 预载入组件："></a>6. 预载入组件：</h3><p>require.js；</p>
+<h3 id="7-减少-DOM-元素数量；"><a href="#7-减少-DOM-元素数量；" class="headerlink" title="7. 减少 DOM 元素数量；"></a>7. 减少 DOM 元素数量；</h3><h3 id="8-最小化iframe的数量："><a href="#8-最小化iframe的数量：" class="headerlink" title="8. 最小化iframe的数量："></a>8. 最小化iframe的数量：</h3><p>iframe 是 网站SEO 的大忌。所以针对前端优化来说 iframe 有其好处，也有其弊端，谨慎使用吧。</p>
+<h3 id="9-杜绝-http-404-错误"><a href="#9-杜绝-http-404-错误" class="headerlink" title="9. 杜绝 http 404 错误"></a>9. 杜绝 http 404 错误</h3><p>对页面链接的充分测试加上对 Web 服务器 error 日志的不断跟踪能有效减少 404 错误，也能提升用户体验：</p>
+<pre><code>1）. 杜绝所有网站现有的链接的404，死链接；
+
+2）.自定义404页面，提醒用户，访问的页面不存在，并自动跳转至有效页面。
+
+    如： https://www.btluo.com/404.html；</code></pre><h3 id="10-防止页面阻塞："><a href="#10-防止页面阻塞：" class="headerlink" title="10.防止页面阻塞："></a>10.防止页面阻塞：</h3><p>css文件在头部引入，js在也页面尾部，防止页面阻塞；</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">罗彪的个人博客</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2018/10/10/%E5%90%8E%E7%AB%AF/2018/101001/" class="pre-post btn btn-default" title='服务器-搭建服务器'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            服务器-搭建服务器</span>
+    </a>
+    
+    
+    <a href="/2018/10/05/%E5%90%8E%E7%AB%AF/2018/100501/" class="next-post btn btn-default" title='服务器-1.配置https'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            服务器-1.配置https</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-尽量减少-HTTP-请求"><span class="toc-text">1. 尽量减少 HTTP 请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-减少-DNS-查找："><span class="toc-text">2 减少 DNS 查找：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-避免重定向；"><span class="toc-text">3. 避免重定向；</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Ajax可缓存："><span class="toc-text">4 .Ajax可缓存：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-延迟载入组件："><span class="toc-text">5. 延迟载入组件：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-预载入组件："><span class="toc-text">6. 预载入组件：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-减少-DOM-元素数量；"><span class="toc-text">7. 减少 DOM 元素数量；</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-最小化iframe的数量："><span class="toc-text">8. 最小化iframe的数量：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-杜绝-http-404-错误"><span class="toc-text">9. 杜绝 http 404 错误</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-防止页面阻塞："><span class="toc-text">10.防止页面阻塞：</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+</body>
+</html>

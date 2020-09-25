@@ -1,0 +1,363 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="referrer" content="no-referrer" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="我的个人博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="vue" />
+
+
+<meta name="description" content="概述每个 Vue 实例在被创建时都要经过一系列的初始化过程——例如，需要设置数据监听、编译模板、将实例挂载到 DOM 并在数据变化时更新 DOM 等。同时在这个过程中也会运行一些叫做生命周期钩子..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    vue-8.生命周期钩子函数详解 |
+    
+    我的个人博客
+</title>
+
+<link rel="alternate" href="/atom.xml" title="我的个人博客" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+</head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/bgImg.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='露馅的番茄'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!-- <h2 class="text-hide">罗彪的个人博客</h2> -->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        我的个人博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/"><i class="fa "></i>
+                                分类</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/tags/"><i class="fa "></i>
+                                标签</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/aboutMe/"><i class="fa "></i>
+                                关于我</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="vue-8.生命周期钩子函数详解">
+            
+            vue-8.生命周期钩子函数详解
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/vue/" rel="tag">vue</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2018/12/23</span>
+    </span>
+    
+    
+</div>
+        
+        
+        <p class="fa fa-exclamation-triangle warning">
+            本文于<strong>
+                642</strong>
+            天之前发表，文中内容可能已经过时。
+        </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>每个 Vue 实例在被创建时都要经过一系列的初始化过程——例如，需要设置数据监听、编译模板、将实例挂载到 DOM 并在数据变化时更新 DOM 等。同时在这个过程中也会运行一些叫做生命周期钩子的函数。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>参考链接：<a href="">生命周期</a></p>
+<p>案例链接：<a href="https://gitee.com/caseAddress/vueDemo07.git" target="_blank" rel="noopener">https://gitee.com/caseAddress/vueDemo07.git</a></p>
+<h3 id="一-什么是生命周期钩子函数"><a href="#一-什么是生命周期钩子函数" class="headerlink" title="一.什么是生命周期钩子函数"></a>一.什么是生命周期钩子函数</h3><p>每个 Vue 实例在被创建时都要经过一系列的初始化过程——例如，需要设置数据监听、编译模板、将实例挂载到 DOM 并在数据变化时更新 DOM 等。同时在这个过程中也会运行一些叫做生命周期钩子的函数，这给了用户在不同阶段添加自己的代码的机会。</p>
+<p>比如上一篇文章：<a href="https://www.btluo.com/news.html?articleId=26" target="_blank" rel="noopener">vue-事件结合双向绑定实现最简单版todolist</a>中使用到的mounted，也有一些其它的钩子，在实例生命周期的不同阶段被调用，如 beforeDestroy、updated 和 destroyed等。生命周期钩子的 this 上下文指向调用它的 Vue 实例。具体使用api方法：<a href="https://cn.vuejs.org/v2/api/#%E9%80%89%E9%A1%B9-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%92%A9%E5%AD%90" target="_blank" rel="noopener">选项-生命周期钩子</a>；</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-36f3ae41cfda68e9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<p><strong>vue的8中生命周期函数：</strong></p>
+<p>1.beforeCreate：该函数在实例对象刚被创建，还没有绑定属性时触发执行。</p>
+<p>2.created：该函数在实例对象完成创建和属性绑定，但是DOM还未生成（$el属性还不存在）时触发执行。</p>
+<p>3.beforeMount：该函数在组件挂载之前触发执行。</p>
+<p>4.mounted：该函数在组件挂载完成之后触发执行。</p>
+<p>5.beforeUpdate：该函数在组件数据更新之前触发执行。</p>
+<p>6.updated：该函数在组件数据更新完毕之后触发执行。</p>
+<p>7.beforeDestroy：该函数在实例对象销毁之前触发执行。</p>
+<p>8.destroyed：该函数在实例对象完成销毁之后触发执行。</p>
+<table>
+<thead>
+<tr>
+<th>钩子函数</th>
+<th>触发的行为</th>
+<th>在此阶段可以做的事情</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>beforeCreadted</td>
+<td>vue实例的挂载元素$el和数据对象data都为undefined，还未初始化。</td>
+<td>加loading事件</td>
+</tr>
+<tr>
+<td>created</td>
+<td>vue实例的数据对象data有了，$el还没有</td>
+<td>结束loading、请求数据为mounted渲染做准备</td>
+</tr>
+<tr>
+<td>beforeMount</td>
+<td>vue实例的$el和data都初始化了，但还是虚拟的dom节点，具体的data.filter还未替换。</td>
+<td></td>
+</tr>
+<tr>
+<td>mounted</td>
+<td>vue实例挂载完成，data.filter成功渲染</td>
+<td>配合路由钩子使用</td>
+</tr>
+<tr>
+<td>beforeUpdate</td>
+<td>data更新时触发</td>
+<td></td>
+</tr>
+<tr>
+<td>updated</td>
+<td>data更新时触发</td>
+<td>数据更新时，做一些处理（此处也可以用watch进行观测）</td>
+</tr>
+<tr>
+<td>beforeDestroy</td>
+<td>组件销毁时触发</td>
+<td></td>
+</tr>
+<tr>
+<td>destroyed</td>
+<td>组件销毁时触发，vue实例解除了事件监听以及和dom的绑定（无响应了），但DOM节点依旧存在</td>
+<td>组件销毁时进行提示</td>
+</tr>
+</tbody></table>
+<h3 id="二-官网生命周期图"><a href="#二-官网生命周期图" class="headerlink" title="二.官网生命周期图"></a>二.官网生命周期图</h3><p><img src="https://upload-images.jianshu.io/upload_images/12858218-ab3bf813dc8c6eee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-72b7598a242b3b01.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">罗彪的个人博客</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2019/04/12/%E5%89%8D%E7%AB%AF/2019/041201/" class="pre-post btn btn-default" title='jquery on()方法无响应问题'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            jquery on()方法无响应问题</span>
+    </a>
+    
+    
+    <a href="/2018/12/22/%E5%89%8D%E7%AB%AF/2018/122202/" class="next-post btn btn-default" title='vue-7.组件的创建及使用'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            vue-7.组件的创建及使用</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一-什么是生命周期钩子函数"><span class="toc-text">一.什么是生命周期钩子函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二-官网生命周期图"><span class="toc-text">二.官网生命周期图</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+</body>
+</html>

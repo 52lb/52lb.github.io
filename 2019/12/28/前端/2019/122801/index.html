@@ -1,0 +1,323 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="referrer" content="no-referrer" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="我的个人博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="nodejs" />
+
+
+<meta name="description" content="概述在开发小程序的过程中有多处页面使用了图片上传的功能，为了减少服务器的压力，建议还是上传到腾讯云，阿里云或者千牛云等其他平台上来存储我们的图片。
+一.背景当使用小程序上传文件时，服务器接口需要..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    微信小程序-如何直接上传文件到腾讯云 |
+    
+    我的个人博客
+</title>
+
+<link rel="alternate" href="/atom.xml" title="我的个人博客" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+</head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/bgImg.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='露馅的番茄'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!-- <h2 class="text-hide">罗彪的个人博客</h2> -->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        我的个人博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/"><i class="fa "></i>
+                                分类</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/tags/"><i class="fa "></i>
+                                标签</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/aboutMe/"><i class="fa "></i>
+                                关于我</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="微信小程序-如何直接上传文件到腾讯云">
+            
+            微信小程序-如何直接上传文件到腾讯云
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/nodejs/" rel="tag">nodejs</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2019/12/28</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在开发小程序的过程中有多处页面使用了图片上传的功能，为了减少服务器的压力，建议还是上传到腾讯云，阿里云或者千牛云等其他平台上来存储我们的图片。</p>
+<h2 id="一-背景"><a href="#一-背景" class="headerlink" title="一.背景"></a>一.背景</h2><p>当使用小程序上传文件时，服务器接口需要对上传文件进行处理，如果同一时间访问量大的话，后台要先处理请求，在把上传的文件存放到指定的文件夹里，在返回给客服端结果，处理的速度相对是比较慢的，用户等待的时间也就比较长，体验感不好。</p>
+<p>如果我们在上传文件时直接上传到云服务器（腾讯云，阿里云，七牛云等）上，我们就可以直接把这个上传返回的可访问的文件地址在前端拿到，然后后端接收直接存入数据库就行，处理的时间就大大的减少了。</p>
+<h2 id="二-目录结构"><a href="#二-目录结构" class="headerlink" title="二.目录结构"></a>二.目录结构</h2><p><img src="https://upload-images.jianshu.io/upload_images/12858218-a86abf98a348d04b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<h2 id="三-主要文件"><a href="#三-主要文件" class="headerlink" title="三.主要文件"></a>三.主要文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">config.js----配置腾讯云信息；</span><br><span class="line">cos-wx-sdk-v5.js----微信小程序SDK 腾讯云对象存储服务；</span><br><span class="line">sdk.js----封装的返回文件路径接口；</span><br><span class="line">util.js----更改文件名时用于获取时间戳；</span><br><span class="line">uploadToCos文件夹----测试demo:上传图片至腾讯云；</span><br></pre></td></tr></table></figure>
+
+<h2 id="四-uploadToCos效果图"><a href="#四-uploadToCos效果图" class="headerlink" title="四.uploadToCos效果图"></a>四.uploadToCos效果图</h2><p><img src="https://upload-images.jianshu.io/upload_images/12858218-42f2bfd938bd2847.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<h2 id="五-实现步骤"><a href="#五-实现步骤" class="headerlink" title="五.实现步骤"></a>五.实现步骤</h2><h3 id="1-config-js"><a href="#1-config-js" class="headerlink" title="1.config.js"></a>1.config.js</h3><p>–配置腾讯云信息;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var config = &#123;</span><br><span class="line">    Bucket: &quot;**********&quot;,</span><br><span class="line">    Region: &quot;ap-******&quot;,</span><br><span class="line">    SecretId: &quot;*******************&quot;,</span><br><span class="line">    SecretKey: &quot;********************&quot;</span><br><span class="line">&#125;</span><br><span class="line">module.exports = config;</span><br></pre></td></tr></table></figure>
+
+<p>注意将*替换成自己从腾讯云获取的配置信息（配置信息最好通过后台请求接口返回在放入config.js）。</p>
+<p>腾讯云对象存储：<a href="https://cloud.tencent.com/document/product/436/7751" target="_blank" rel="noopener">https://cloud.tencent.com/document/product/436/7751</a></p>
+<h3 id="2-cos-wx-sdk-v5-js"><a href="#2-cos-wx-sdk-v5-js" class="headerlink" title="2.cos-wx-sdk-v5.js"></a>2.cos-wx-sdk-v5.js</h3><p>–微信小程序SDK for 腾讯云对象存储服务;</p>
+<p>cos-wx-sdk-v5快速入门：<a href="https://www.npmjs.com/package/cos-wx-sdk-v5" target="_blank" rel="noopener">https://www.npmjs.com/package/cos-wx-sdk-v5</a></p>
+<h3 id="3-sdk-js"><a href="#3-sdk-js" class="headerlink" title="3.sdk.js"></a>3.sdk.js</h3><p>–封装的返回文件路径接口;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">var util = require(&quot;../utils/util.js&quot;);</span><br><span class="line">var COS = require(&quot;../utils/cos-wx-sdk-v5.js&quot;);</span><br><span class="line">var config = require(&quot;../utils/config.js&quot;);</span><br><span class="line">var cos = new COS(&#123;</span><br><span class="line">    getAuthorization: function (params, callback) &#123;//获取签名 必填参数</span><br><span class="line">        // 方法一（推荐）服务器提供计算签名的接口</span><br><span class="line">        // wx.request(&#123;</span><br><span class="line">        //     url: &quot;SIGN_SERVER_URL&quot;,</span><br><span class="line">        //     data: &#123;</span><br><span class="line">        //         Method: params.Method,</span><br><span class="line">        //         Key: params.Key</span><br><span class="line">        //     &#125;,</span><br><span class="line">        //     dataType: &quot;text&quot;,</span><br><span class="line">        //     success: function (result) &#123;</span><br><span class="line">        //         callback(result.data);</span><br><span class="line">        //     &#125;</span><br><span class="line">        // &#125;);</span><br><span class="line">        // 方法二（适用于前端调试）</span><br><span class="line">        var authorization = COS.getAuthorization(&#123;</span><br><span class="line">            SecretId: config.SecretId,</span><br><span class="line">            SecretKey: config.SecretKey,</span><br><span class="line">            Method: params.Method,</span><br><span class="line">            Key: params.Key</span><br><span class="line">        &#125;);</span><br><span class="line">        callback(authorization);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">function sdk(filePath) &#123;</span><br><span class="line">    return new Promise(function (resolve, reject) &#123;</span><br><span class="line">        let nowTime = util.formatTime(new Date());</span><br><span class="line">        // 上传的文件名</span><br><span class="line">        let Key = &quot;album/&quot; + nowTime + &quot;/&quot; + filePath.substr(filePath.lastIndexOf(&quot;/&quot;) + 1);</span><br><span class="line">        cos.postObject(&#123;</span><br><span class="line">            Bucket: config.Bucket,</span><br><span class="line">            Region: config.Region,</span><br><span class="line">            Key: Key,</span><br><span class="line">            FilePath: filePath,</span><br><span class="line">            onProgress: function (info) &#123;</span><br><span class="line">                // 上传进度</span><br><span class="line">                // console.log(info);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, function (err, data) &#123;</span><br><span class="line">            // console.log(err);</span><br><span class="line">            // console.log(data);</span><br><span class="line">            let res;</span><br><span class="line">            if (data &amp;&amp; data.headers.Location) &#123;</span><br><span class="line">                res =&#123;code:0,data: data.headers.Location&#125;</span><br><span class="line">                resolve(res);</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                // 记得更换config里的腾讯云配置，否则就会执行下面代码</span><br><span class="line">                res = &#123;code: 400,msg: &quot;文件上传失败，请重试&quot;&#125;</span><br><span class="line">                resolve(res);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line">module.exports = &#123;</span><br><span class="line">    sdk</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="4-util-js"><a href="#4-util-js" class="headerlink" title="4.util.js"></a>4.util.js</h3><p>–更改文件名时用于获取时间戳;</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">const formatTime = date =&gt; &#123;</span><br><span class="line">    const year = date.getFullYear()</span><br><span class="line">    const month = date.getMonth() + 1</span><br><span class="line">    const day = date.getDate()</span><br><span class="line">    const hour = date.getHours()</span><br><span class="line">    const minute = date.getMinutes()</span><br><span class="line">    const second = date.getSeconds()</span><br><span class="line"></span><br><span class="line">    return [year, month, day].map(formatNumber).join(&apos;/&apos;)</span><br><span class="line">    // + &apos; &apos; + [hour, minute, second].map(formatNumber).join(&apos;:&apos;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const formatNumber = n =&gt; &#123;</span><br><span class="line">    n = n.toString()</span><br><span class="line">    return n[1] ? n : &apos;0&apos; + n</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 消息提示</span><br><span class="line">function showErrorToast(msg) &#123;</span><br><span class="line">    wx.showToast(&#123;</span><br><span class="line">        title: msg,</span><br><span class="line">        icon: &apos;loading&apos;,</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line">// 错误提示</span><br><span class="line">function showErrorModal(msg) &#123;</span><br><span class="line">    wx.showModal(&#123;</span><br><span class="line">        title: &apos;温馨提示&apos;,</span><br><span class="line">        content: msg,</span><br><span class="line">        showCancel: false</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">    formatTime,</span><br><span class="line">    showErrorToast,</span><br><span class="line">    showErrorModal,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="5-uploadToCos文件夹"><a href="#5-uploadToCos文件夹" class="headerlink" title="5.uploadToCos文件夹"></a>5.uploadToCos文件夹</h3><p><strong>html:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">&lt;view class=&quot;videoBox&quot;&gt;</span><br><span class="line">    &lt;view class=&quot;space&quot;&gt;&lt;/view&gt;</span><br><span class="line">    &lt;view class=&quot;videoBody flex ac&quot;&gt;</span><br><span class="line">        &lt;view class=&quot;uploadBox&quot;&gt;</span><br><span class="line">            &lt;image class=&quot;imgBtn&quot; src=&quot;/images/nestEdgeImg.jpg&quot; mode=&quot;aspectFill&quot; bindtap=&quot;chooseWxImage&quot; wx:if=&quot;&#123;&#123;imgUrl == &apos;&apos;&#125;&#125;&quot;&gt;&lt;/image&gt;</span><br><span class="line">            &lt;image class=&quot;imgBtn&quot; src=&quot;&#123;&#123;imgUrl&#125;&#125;&quot; mode=&quot;aspectFill&quot; bindtap=&quot;imgPreview&quot; wx:else&gt;&lt;/image&gt;</span><br><span class="line">            &lt;view class=&quot;delImg&quot; wx:if=&quot;&#123;&#123;imgUrl != &apos;&apos;&#125;&#125;&quot; data-type=&quot;img&quot; bindtap=&quot;delUpload&quot;&gt;</span><br><span class="line">                &lt;image src=&quot;/images/nestEdgeClose.png&quot;&gt;&lt;/image&gt;</span><br><span class="line">            &lt;/view&gt;</span><br><span class="line">        &lt;/view&gt;</span><br><span class="line">        &lt;view class=&quot;uploadBox&quot;&gt;</span><br><span class="line">            &lt;image class=&quot;imgBtn&quot; src=&quot;/images/nestEdgeVideo.jpg&quot; mode=&quot;aspectFill&quot; bindtap=&quot;chooseWxVideo&quot; wx:if=&quot;&#123;&#123;videoUrl == &apos;&apos;&#125;&#125;&quot;&gt;&lt;/image&gt;</span><br><span class="line">            &lt;video src=&quot;&#123;&#123;videoUrl&#125;&#125;&quot; poster=&quot;&#123;&#123;imgUrl&#125;&#125;&quot; wx:else&gt;&lt;/video&gt;</span><br><span class="line">            &lt;view class=&quot;delImg&quot; wx:if=&quot;&#123;&#123;videoUrl != &apos;&apos;&#125;&#125;&quot; data-type=&quot;video&quot; bindtap=&quot;delUpload&quot;&gt;</span><br><span class="line">                &lt;image src=&quot;/images/nestEdgeClose.png&quot;&gt;&lt;/image&gt;</span><br><span class="line">            &lt;/view&gt;</span><br><span class="line">        &lt;/view&gt;</span><br><span class="line">    &lt;/view&gt;</span><br><span class="line">    &lt;view class=&quot;prompt f24 c888&quot;&gt;提示：点击上传图片或视频&lt;/view&gt;</span><br><span class="line">    &lt;view class=&quot;videoFoot&quot;&gt;</span><br><span class="line">        &lt;button class=&quot;btnMain&quot; bindtap=&quot;completeUpload&quot;&gt;完成&lt;/button&gt;</span><br><span class="line">    &lt;/view&gt;</span><br><span class="line">&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>css：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">.videoBox&#123;width: 100%;overflow: hidden;&#125;</span><br><span class="line">.videoBox .videoBody&#123;padding: 40rpx;&#125;</span><br><span class="line">.videoBox .videoBody .uploadBox&#123;width: 210rpx; height: 210rpx; border: 1px dashed #cecece; border-radius: 10rpx; margin-right: 30rpx;position: relative;&#125;</span><br><span class="line">.videoBox .videoBody .uploadBox .imgBtn&#123;width: 100%; height: 100%;&#125;</span><br><span class="line">.videoBox .videoBody .uploadBox .delImg&#123;position: absolute;top: -20rpx;right: -20rpx;&#125;</span><br><span class="line">.videoBox .videoBody .uploadBox .delImg image&#123;width: 40rpx;height: 40rpx;&#125;</span><br><span class="line">.videoBox .videoBody .uploadBox video&#123;width: 100%; height: 100%;&#125;</span><br><span class="line">.videoBox .prompt&#123;padding: 0 40rpx;&#125;</span><br><span class="line">.videoBox .videoFoot&#123;margin-top: 120rpx;&#125;</span><br><span class="line">.videoBox .videoFoot button&#123;width: 92%; margin: 0 4%;height: 90rpx;line-height: 90rpx;&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>js：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br></pre></td><td class="code"><pre><span class="line">var util = require(&quot;../../utils/util.js&quot;);</span><br><span class="line">var sdk = require(&quot;../../utils/sdk.js&quot;);</span><br><span class="line"></span><br><span class="line">Page(&#123;</span><br><span class="line">    /**</span><br><span class="line">     * 页面的初始数据</span><br><span class="line">     * imgUrl：视频封面</span><br><span class="line">     * videoUrl：视频路径</span><br><span class="line">     */</span><br><span class="line">    data: &#123;</span><br><span class="line">        imgUrl: &quot;&quot;,</span><br><span class="line">        videoUrl: &quot;&quot;</span><br><span class="line">    &#125;,</span><br><span class="line">    // 图片本地路径</span><br><span class="line">    chooseWxImage: function (type) &#123;</span><br><span class="line">        let that = this;</span><br><span class="line">        wx.chooseImage(&#123;</span><br><span class="line">            count: 1, // 最多可以选择的图片张数，默认9</span><br><span class="line">            sizeType: [&quot;original&quot;, &quot;compressed&quot;], // original 原图，compressed 压缩图，默认二者都有</span><br><span class="line">            sourceType: [&quot;album&quot;, &quot;camera&quot;], // album 从相册选图，camera 使用相机，默认二者都有</span><br><span class="line">            success: function (res) &#123;</span><br><span class="line">                let filePath = res.tempFilePaths[0];</span><br><span class="line">                wx.showLoading(&#123; title: &quot;图片上传中&quot;, mask: true &#125;);</span><br><span class="line">                sdk.sdk(filePath).then(res =&gt; &#123;</span><br><span class="line">                    console.log(res);</span><br><span class="line">                    if (res.code == 0) &#123;</span><br><span class="line">                        wx.hideLoading();</span><br><span class="line">                        that.setData(&#123;</span><br><span class="line">                            imgUrl: res.data</span><br><span class="line">                        &#125;)</span><br><span class="line">                    &#125; else &#123;</span><br><span class="line">                        wx.hideLoading();</span><br><span class="line">                        wx.showModal(&#123;</span><br><span class="line">                            title: &quot;温馨提示&quot;,</span><br><span class="line">                            content: res.msg,</span><br><span class="line">                            showCancel: false,</span><br><span class="line">                            success: function () &#123;</span><br><span class="line">                                that.setData(&#123;</span><br><span class="line">                                    imgUrl: &quot;&quot;</span><br><span class="line">                                &#125;)</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;)</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;,</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">    //图片预览</span><br><span class="line">    imgPreview: function (event) &#123;</span><br><span class="line">        let that = this</span><br><span class="line">            , src = this.data.imgUrl</span><br><span class="line">            , imgList = [src];//获取data-list</span><br><span class="line">        //图片预览</span><br><span class="line">        wx.previewImage(&#123;</span><br><span class="line">            current: src, // 当前显示图片的http链接</span><br><span class="line">            urls: imgList // 需要预览的图片http链接列表</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">    // 添加视频</span><br><span class="line">    chooseWxVideo: function () &#123;</span><br><span class="line">        let that = this;</span><br><span class="line">        wx.chooseVideo(&#123;</span><br><span class="line">            sourceType: [&quot;album&quot;, &quot;camera&quot;],</span><br><span class="line">            maxDuration: 60,</span><br><span class="line">            camera: &quot;back&quot;,</span><br><span class="line">            success(res) &#123;</span><br><span class="line">                let filePath = res.tempFilePath;</span><br><span class="line">                wx.showLoading(&#123; title: &quot;视频上传中&quot;, mask: true &#125;);</span><br><span class="line">                sdk.sdk(filePath).then(res =&gt; &#123;</span><br><span class="line">                    console.log(res);</span><br><span class="line">                    if (res.code == 0) &#123;</span><br><span class="line">                        wx.hideLoading();</span><br><span class="line">                        that.setData(&#123;</span><br><span class="line">                            videoUrl: res.data</span><br><span class="line">                        &#125;)</span><br><span class="line">                    &#125; else &#123;</span><br><span class="line">                        wx.hideLoading();</span><br><span class="line">                        wx.showModal(&#123;</span><br><span class="line">                            title: &quot;温馨提示&quot;,</span><br><span class="line">                            content: res.msg,</span><br><span class="line">                            showCancel: false,</span><br><span class="line">                            success: function () &#123;</span><br><span class="line">                                that.setData(&#123;</span><br><span class="line">                                    videoUrl: &quot;&quot;</span><br><span class="line">                                &#125;)</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;)</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">    // 删除图片或视频</span><br><span class="line">    delUpload: function (e) &#123;</span><br><span class="line">        console.log(e.currentTarget.dataset.type);</span><br><span class="line">        let that = this</span><br><span class="line">            , type = e.currentTarget.dataset.type;</span><br><span class="line">        if (type == &quot;img&quot;) &#123;</span><br><span class="line">            that.setData(&#123;</span><br><span class="line">                imgUrl: &quot;&quot;</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125; else if (type == &quot;video&quot;) &#123;</span><br><span class="line">            that.setData(&#123;</span><br><span class="line">                videoUrl: &quot;&quot;</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            util.showErrorModal(&quot;删除失败，请重试！&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    // 完成视频编辑</span><br><span class="line">    completeUpload: function () &#123;</span><br><span class="line">        let that = this</span><br><span class="line">            , imgUrl = this.data.imgUrl</span><br><span class="line">            , videoUrl = this.data.videoUrl;</span><br><span class="line">        if (imgUrl == &quot;&quot;) &#123;</span><br><span class="line">            util.showErrorModal(&quot;请上传视频封面！&quot;);</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        if (videoUrl == &quot;&quot;) &#123;</span><br><span class="line">            util.showErrorModal(&quot;请上传视频！&quot;);</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        wx.showModal(&#123;</span><br><span class="line">            title: &quot;温馨提示&quot;,</span><br><span class="line">            content: &quot;请求成功！&quot;,</span><br><span class="line">            showCancel: false,</span><br><span class="line">            success: function () &#123;</span><br><span class="line">                wx.redirectTo(&#123;</span><br><span class="line">                    url: &quot;/pages/index/index&quot;,</span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>项目案例下载地址：<a href="https://gitee.com/caseAddress/wxminiDemo.git" target="_blank" rel="noopener">https://gitee.com/caseAddress/wxminiDemo.git</a> –其他小程序插件共用地址，持续更新中  </p>
+<p>参考文章：<a href="https://github.com/piscium2010/cos-wx-upload-file" target="_blank" rel="noopener">https://github.com/piscium2010/cos-wx-upload-file</a></p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">罗彪的个人博客</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2020/01/06/%E5%89%8D%E7%AB%AF/2020/010601/" class="pre-post btn btn-default" title='在vue中添加浏览器导航标题favicon图标'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            在vue中添加浏览器导航标题favicon图标</span>
+    </a>
+    
+    
+    <a href="/2019/12/26/%E5%89%8D%E7%AB%AF/2019/122601/" class="next-post btn btn-default" title='vue整合wangeditor3富文本编辑器'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            vue整合wangeditor3富文本编辑器</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一-背景"><span class="toc-text">一.背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-目录结构"><span class="toc-text">二.目录结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-主要文件"><span class="toc-text">三.主要文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-uploadToCos效果图"><span class="toc-text">四.uploadToCos效果图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#五-实现步骤"><span class="toc-text">五.实现步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-config-js"><span class="toc-text">1.config.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-cos-wx-sdk-v5-js"><span class="toc-text">2.cos-wx-sdk-v5.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-sdk-js"><span class="toc-text">3.sdk.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-util-js"><span class="toc-text">4.util.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-uploadToCos文件夹"><span class="toc-text">5.uploadToCos文件夹</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+</body>
+</html>

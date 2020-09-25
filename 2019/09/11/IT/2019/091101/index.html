@@ -1,0 +1,310 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="referrer" content="no-referrer" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="我的个人博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="其他" />
+
+
+<meta name="description" content="概述在vscode中新建.vue的文件时，我希望VSCODE能够根据配置，自动生成我想要的vue的内容。
+正文1.打开vscode依次选择文件-&gt;首选项-&gt;用户代码片段，这时候，会出..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    使用vscode如何建立vue模板 |
+    
+    我的个人博客
+</title>
+
+<link rel="alternate" href="/atom.xml" title="我的个人博客" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+</head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/bgImg.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='露馅的番茄'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!-- <h2 class="text-hide">罗彪的个人博客</h2> -->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        我的个人博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/"><i class="fa "></i>
+                                分类</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/tags/"><i class="fa "></i>
+                                标签</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/aboutMe/"><i class="fa "></i>
+                                关于我</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="使用vscode如何建立vue模板">
+            
+            使用vscode如何建立vue模板
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/IT/">IT</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/%E5%85%B6%E4%BB%96/" rel="tag">其他</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2019/09/11</span>
+    </span>
+    
+    
+</div>
+        
+        
+        <p class="fa fa-exclamation-triangle warning">
+            本文于<strong>
+                380</strong>
+            天之前发表，文中内容可能已经过时。
+        </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在vscode中新建.vue的文件时，我希望VSCODE能够根据配置，自动生成我想要的vue的内容。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="1-打开vscode"><a href="#1-打开vscode" class="headerlink" title="1.打开vscode"></a>1.打开vscode</h3><p>依次选择文件-&gt;首选项-&gt;用户代码片段，这时候，会出现一个搜索框，然后在搜索框中输入vue，如下所示：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-a5eec4843d497718.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<h3 id="2-进入vue-json"><a href="#2-进入vue-json" class="headerlink" title="2.进入vue.json"></a>2.进入vue.json</h3><p>选择打开vue.json之后，复制以下内容到这个文件中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"> &quot;Print to console&quot;: &#123;</span><br><span class="line">  &quot;prefix&quot;: &quot;vue&quot;,</span><br><span class="line">  &quot;body&quot;: [</span><br><span class="line">   &quot;&lt;!-- $0 --&gt;&quot;,</span><br><span class="line">   &quot;&lt;template&gt;&quot;,</span><br><span class="line">   &quot; &lt;div&gt;&lt;/div&gt;&quot;,</span><br><span class="line">   &quot;&lt;/template&gt;&quot;,</span><br><span class="line">   &quot;&quot;,</span><br><span class="line">   &quot;&lt;script&gt;&quot;,</span><br><span class="line">   &quot;export default &#123;&quot;,</span><br><span class="line">   &quot; data () &#123;&quot;,</span><br><span class="line">   &quot;  return &#123;&quot;,</span><br><span class="line">   &quot;  &#125;;&quot;,</span><br><span class="line">   &quot; &#125;,&quot;,</span><br><span class="line">   &quot;&quot;,</span><br><span class="line">   &quot; components: &#123;&#125;,&quot;,</span><br><span class="line">   &quot;&quot;,</span><br><span class="line">   &quot; computed: &#123;&#125;,&quot;,</span><br><span class="line">   &quot;&quot;,</span><br><span class="line">   &quot; mounted: &#123;&#125;,&quot;,</span><br><span class="line">   &quot;&quot;,</span><br><span class="line">   &quot; methods: &#123;&#125;&quot;,</span><br><span class="line">   &quot;&#125;&quot;,</span><br><span class="line">   &quot;&quot;,</span><br><span class="line">   &quot;&lt;/script&gt;&quot;,</span><br><span class="line">   &quot;&lt;style lang=&apos;scss&apos; scoped&gt;&quot;,</span><br><span class="line">   &quot;&lt;/style&gt;&quot;</span><br><span class="line"> ],</span><br><span class="line">  &quot;description&quot;: &quot;Log output to console&quot;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>保存后关闭这个文件；</p>
+<h3 id="3-用法"><a href="#3-用法" class="headerlink" title="3.用法"></a>3.用法</h3><p>我们新建一个login.vue的文件，然后输入vue，可以看到以下内容：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-b1a669a510e5596b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<p>选择vue，回车后，就能自动生成内容，如下图所示：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-d7d78df5ae916641.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<h3 id="4-其他"><a href="#4-其他" class="headerlink" title="4.其他"></a>4.其他</h3><p>除了vue之外，也可以为.js、.html等各种文件预设代码片段，具体用法可以搜索<a href="https://www.baidu.com/s?wd=snippet&ie=UTF-8" target="_blank" rel="noopener">snippet</a>了解更多；</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">罗彪的个人博客</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2019/09/11/%E5%89%8D%E7%AB%AF/2019/091101/" class="pre-post btn btn-default" title='vue-9.路由：登录状态的判断'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            vue-9.路由：登录状态的判断</span>
+    </a>
+    
+    
+    <a href="/2019/09/10/%E5%90%8E%E7%AB%AF/2019/091002/" class="next-post btn btn-default" title='PM2简易使用手册'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            PM2简易使用手册</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-打开vscode"><span class="toc-text">1.打开vscode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-进入vue-json"><span class="toc-text">2.进入vue.json</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-用法"><span class="toc-text">3.用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-其他"><span class="toc-text">4.其他</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+</body>
+</html>

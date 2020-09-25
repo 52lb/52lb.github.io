@@ -1,0 +1,411 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="referrer" content="no-referrer" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="我的个人博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="vue" />
+
+
+<meta name="description" content="概述vue是一个构建数据驱动的 web 界面的渐进式框架。Vue.js 的目标是通过尽可能简单的 API 实现响应的数据绑定和组合的视图组件。
+正文参考链接：vue官网
+安装步骤：
+一.必须安装..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    vue-1.开发环境配置 |
+    
+    我的个人博客
+</title>
+
+<link rel="alternate" href="/atom.xml" title="我的个人博客" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+</head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/bgImg.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='露馅的番茄'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!-- <h2 class="text-hide">罗彪的个人博客</h2> -->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        我的个人博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/"><i class="fa "></i>
+                                分类</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/tags/"><i class="fa "></i>
+                                标签</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/aboutMe/"><i class="fa "></i>
+                                关于我</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="vue-1.开发环境配置">
+            
+            vue-1.开发环境配置
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/vue/" rel="tag">vue</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2018/12/15</span>
+    </span>
+    
+    
+</div>
+        
+        
+        <p class="fa fa-exclamation-triangle warning">
+            本文于<strong>
+                650</strong>
+            天之前发表，文中内容可能已经过时。
+        </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>vue是一个构建数据驱动的 web 界面的渐进式框架。Vue.js 的目标是通过尽可能简单的 API 实现响应的数据绑定和组合的视图组件。</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>参考链接：<a href="https://cn.vuejs.org/v2/guide/installation.html" target="_blank" rel="noopener">vue官网</a></p>
+<p><strong>安装步骤：</strong></p>
+<h3 id="一-必须安装nodejs"><a href="#一-必须安装nodejs" class="headerlink" title="一.必须安装nodejs"></a>一.必须安装nodejs</h3><p>安装nodejs很简单，直接在官方网站下载<a href="http://www.nodejs.org/download/" target="_blank" rel="noopener">http://www.nodejs.org/download/</a>，然后一路next，傻瓜式安装就行了，一般情况下安装好了npm也就自己安装好了，现在官网已经把npm集成在nodejs的安装包里面了，参考链接：nodejs的安装</p>
+<h3 id="二-搭建vue的开发环境"><a href="#二-搭建vue的开发环境" class="headerlink" title="二.搭建vue的开发环境"></a>二.搭建vue的开发环境</h3><p><strong>安装vue的脚手架工具  官方命令行工具</strong></p>
+<pre><code>npm install --global vue-cli  或  cnpm install --global vue-cli        </code></pre><p>（此命令只需要执行一次）–cnpm淘宝镜像， 下载包的速度更快一些。</p>
+<p>地址：<a href="http://npm.taobao.org/" target="_blank" rel="noopener">http://npm.taobao.org/</a></p>
+<p><strong>安装cnpm:</strong></p>
+<pre><code>npm install -g cnpm --registry=https://registry.npm.taobao.org</code></pre><p><strong>打开命令行:</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-665a212629da4464.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<p><strong>输入vue的npm或cnpm的安装命令 ：</strong> </p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-4b43282f769c9336.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<h3 id="三-创建项目"><a href="#三-创建项目" class="headerlink" title="三.创建项目"></a>三.创建项目</h3><p>cd到对应的一个项目里面，我在D盘建了个vue的文件夹为例；</p>
+<p>–生产项目vue-demo01</p>
+<pre><code>vue init webpack vue-demo01</code></pre><p>如果安装报错：</p>
+<p>–进入项目中</p>
+<pre><code>cd  vue-demo01</code></pre><p>–如果创建项目的时候没有报错，这一步可以省略。如果报错了  cd到项目里面运行  cnpm install  /  npm install</p>
+<pre><code>cnpm install  或  npm install  </code></pre><p><strong>注：</strong></p>
+<p>1.名字是否为vue-dome，可以直接回车或更换；–Project name</p>
+<p>2.项目描述，也可以不写，可直接回车；–Project description</p>
+<p>3.项目作者，可直接回车；–Author</p>
+<p>4.vue build直接回车就行；–Vue build</p>
+<p>5.是否安装vue-router，安装就行，后面在了解；–Install vue-router</p>
+<p>6.是否安装vue代码检验工具，不建议安装，安装后打个括号可能都会报错；–Use ESLint to lint your code?</p>
+<p>7.剩下的都直接回车就行；</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-55bade64ec0a5266.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<p>项目生成中:</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-db90973ddce47168.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<p>项目生成成功;</p>
+<p>项目运行：npm run dev–进入项目</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-86817f00b16eb3da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<p>出现这个就打开成功了，浏览器打开就行:</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-be9aba37a4f922f1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<p>vue项目运行成功;</p>
+<h3 id="四-另外一种创建项目的方式"><a href="#四-另外一种创建项目的方式" class="headerlink" title="四.另外一种创建项目的方式"></a>四.另外一种创建项目的方式</h3><p>vue的简单案例，更加简洁，直接安装，推荐使用</p>
+<p>vue init webpack-simple vue-demo02</p>
+<p><strong>注：</strong></p>
+<p>1.名字是否为vue-dome，可以直接回车或更换；–Project name</p>
+<p>2.项目描述，也可以不写，可直接回车；–Project description</p>
+<p>3.项目作者，可直接回车；–Author</p>
+<p>4.是否安装证书，直接回车；</p>
+<p>5.是否安装sass，使用就安装，不实用可以不安装；</p>
+<p>![我的博客图片](<a href="https://upload-images.jianshu.io/upload_images/12858218-ec60071085cde702.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240vue" target="_blank" rel="noopener">https://upload-images.jianshu.io/upload_images/12858218-ec60071085cde702.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240vue</a></p>
+<p>简单版</p>
+<p>–安装成功后，进入项目：</p>
+<pre><code>cd  vue-demo02</code></pre><p>–安装依赖，简洁版必须安装，否则会报错</p>
+<pre><code>cnpm install  或  npm install      </code></pre><p><img src="https://upload-images.jianshu.io/upload_images/12858218-578d67254416badc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<p>安装成功：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-ece0b49cb5dbccb4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<p>简洁版文件相对较少；</p>
+<p>运行项目：</p>
+<pre><code>npm run dev</code></pre><p><img src="https://upload-images.jianshu.io/upload_images/12858218-dab3ded82f74436c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<p>运行项目:</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-0059cb57e564a252.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<p>项目运行成功；</p>
+<h3 id="五-目录文件夹说明"><a href="#五-目录文件夹说明" class="headerlink" title="五.目录文件夹说明"></a>五.目录文件夹说明</h3><table>
+<thead>
+<tr>
+<th>名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>build</td>
+<td>项目构建的一些代码</td>
+</tr>
+<tr>
+<td>config</td>
+<td>开发环境的配置</td>
+</tr>
+<tr>
+<td>node_modules</td>
+<td>依赖包</td>
+</tr>
+<tr>
+<td>src</td>
+<td>源码，写代码的文件夹</td>
+</tr>
+<tr>
+<td>static</td>
+<td>静态文件夹</td>
+</tr>
+<tr>
+<td>.babelrc</td>
+<td>ES6编译的一些配置</td>
+</tr>
+<tr>
+<td>.editorconfig</td>
+<td>代码风格配置文件</td>
+</tr>
+<tr>
+<td>.gitignore</td>
+<td>git上传时忽略的一些文件，比如node_modules</td>
+</tr>
+<tr>
+<td>.postcssrc.js</td>
+<td>转换css样式</td>
+</tr>
+<tr>
+<td>index.html</td>
+<td>入口文件</td>
+</tr>
+<tr>
+<td>package-lock.json</td>
+<td>详细项目相信，项目名称，开发依赖记录等</td>
+</tr>
+<tr>
+<td>package.json</td>
+<td>项目信息，项目名称，开发的依赖的记录等</td>
+</tr>
+</tbody></table>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">罗彪的个人博客</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2018/12/16/%E5%89%8D%E7%AB%AF/2018/121603/" class="pre-post btn btn-default" title='vue-2.数据绑定及列表渲染'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            vue-2.数据绑定及列表渲染</span>
+    </a>
+    
+    
+    <a href="/2018/11/18/IT/2018/111801/" class="next-post btn btn-default" title='收藏的几个前端实用网站'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            收藏的几个前端实用网站</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一-必须安装nodejs"><span class="toc-text">一.必须安装nodejs</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二-搭建vue的开发环境"><span class="toc-text">二.搭建vue的开发环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三-创建项目"><span class="toc-text">三.创建项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四-另外一种创建项目的方式"><span class="toc-text">四.另外一种创建项目的方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五-目录文件夹说明"><span class="toc-text">五.目录文件夹说明</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+</body>
+</html>

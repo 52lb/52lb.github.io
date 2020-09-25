@@ -1,0 +1,319 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="referrer" content="no-referrer" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="我的个人博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="nodejs" />
+
+
+<meta name="description" content="概述对登录管理后台时，进行登录失效校验思路：在管理员登录请求nodejs时，nodejs根据jwt生成token，前端接收token，存放在本地，之后每次请求将token放在header带给no..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    nodejs-使用jsonwebtoken对管理后台进行token校验 |
+    
+    我的个人博客
+</title>
+
+<link rel="alternate" href="/atom.xml" title="我的个人博客" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+</head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/bgImg.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='露馅的番茄'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!-- <h2 class="text-hide">罗彪的个人博客</h2> -->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        我的个人博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/"><i class="fa "></i>
+                                分类</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/tags/"><i class="fa "></i>
+                                标签</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/aboutMe/"><i class="fa "></i>
+                                关于我</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="nodejs-使用jsonwebtoken对管理后台进行token校验">
+            
+            nodejs-使用jsonwebtoken对管理后台进行token校验
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/nodejs/" rel="tag">nodejs</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2019/12/04</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>对登录管理后台时，进行登录失效校验思路：在管理员登录请求nodejs时，nodejs根据jwt生成token，前端接收token，存放在本地，之后每次请求将token放在header带给nodejs，后端验证token是否失效。</p>
+<h2 id="1-引入依赖"><a href="#1-引入依赖" class="headerlink" title="1.引入依赖"></a>1.引入依赖</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const fs = require(&quot;fs&quot;);</span><br><span class="line">const path = require(&quot;path&quot;);</span><br><span class="line">const jwt = require(&quot;jsonwebtoken&quot;);</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-生成token"><a href="#2-生成token" class="headerlink" title="2.生成token"></a>2.生成token</h2><p>根据前端登录请求返回data，生成token：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">constructor(data) &#123;</span><br><span class="line">    this.data = data;</span><br><span class="line">&#125;</span><br><span class="line">generateToken() &#123;</span><br><span class="line">    let data = this.data;</span><br><span class="line">    let created = Math.floor(Date.now() / 1000);</span><br><span class="line">    let cert = fs.readFileSync(path.join(__dirname, &quot;../pem/rsa_private_key.pem&quot;));//私钥 可以自己生成</span><br><span class="line">    let token = jwt.sign(&#123;</span><br><span class="line">        data,</span><br><span class="line">        exp: created + 60 * 60 * 6, //过期时间6个小时</span><br><span class="line">    &#125;, cert, &#123;algorithm: &quot;RS256&quot;&#125;);</span><br><span class="line">    return token;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-返回token到前端"><a href="#3-返回token到前端" class="headerlink" title="3.返回token到前端"></a>3.返回token到前端</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let jwt = new JwtUtil(result[0].userName);</span><br><span class="line">let token = jwt.generateToken();</span><br><span class="line">ctx.body = &#123; code: 0,data:result[0],access_token: token,&quot;msg&quot;: &quot;登入成功&quot;&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-前端接收token数据，并存入本地"><a href="#4-前端接收token数据，并存入本地" class="headerlink" title="4.前端接收token数据，并存入本地"></a>4.前端接收token数据，并存入本地</h2><p><img src="https://upload-images.jianshu.io/upload_images/12858218-626dde4a493f7f37.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<h2 id="5-请求时携带token"><a href="#5-请求时携带token" class="headerlink" title="5.请求时携带token"></a>5.请求时携带token</h2><p><img src="https://upload-images.jianshu.io/upload_images/12858218-675341528c25c392.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<h2 id="6-nodejs校验前端返回token"><a href="#6-nodejs校验前端返回token" class="headerlink" title="6.nodejs校验前端返回token"></a>6.nodejs校验前端返回token</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">// 校验token</span><br><span class="line">verifyToken() &#123;</span><br><span class="line">    let token = this.data;</span><br><span class="line">    let cert = fs.readFileSync(path.join(__dirname, &quot;../pem/rsa_public_key.pem&quot;));//公钥 可以自己生成</span><br><span class="line">    let res;</span><br><span class="line">    try &#123;</span><br><span class="line">        let result = jwt.verify(token, cert, &#123;algorithms: [&quot;RS256&quot;]&#125;) || &#123;&#125;;</span><br><span class="line">        let &#123;exp = 0&#125; = result, current = Math.floor(Date.now() / 1000);</span><br><span class="line">        if (current &lt;= exp) &#123;</span><br><span class="line">            res = result.data || &#123;&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; catch (e) &#123;</span><br><span class="line">        res = &quot;err&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>根据结果返回不同状态:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">let token = ctx.request.header.myblogtoken;</span><br><span class="line">let jwt = new JwtUtil(token);</span><br><span class="line">let jwtResult = jwt.verifyToken();</span><br><span class="line">if (jwtResult == &quot;err&quot;) &#123;</span><br><span class="line">  ctx.body = &#123; code: 1001, msg: &quot;登录已过期,请重新登录&quot; &#125;;</span><br><span class="line">&#125; else &#123;</span><br><span class="line">  //处理数据</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="7-完整代码"><a href="#7-完整代码" class="headerlink" title="7.完整代码"></a>7.完整代码</h2><p>①.nodejs新建一个jwt.js的文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">// 引入模块依赖</span><br><span class="line">const fs = require(&quot;fs&quot;);</span><br><span class="line">const path = require(&quot;path&quot;);</span><br><span class="line">const jwt = require(&quot;jsonwebtoken&quot;);</span><br><span class="line">// 创建 token 类</span><br><span class="line">class Jwt &#123;</span><br><span class="line">    constructor(data) &#123;</span><br><span class="line">        this.data = data;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //生成token</span><br><span class="line">    generateToken() &#123;</span><br><span class="line">        let data = this.data;</span><br><span class="line">        let created = Math.floor(Date.now() / 1000);</span><br><span class="line">        //私钥 可以自己生成</span><br><span class="line">        let cert = fs.readFileSync(path.join(__dirname, &quot;../pem/rsa_private_key.pem&quot;));</span><br><span class="line">        let token = jwt.sign(&#123;</span><br><span class="line">            data,</span><br><span class="line">            exp: created + 60 * 60 * 6, //过期时间6个小时</span><br><span class="line">        &#125;, cert, &#123;algorithm: &quot;RS256&quot;&#125;);</span><br><span class="line">        return token;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 校验token</span><br><span class="line">    verifyToken() &#123;</span><br><span class="line">        let token = this.data;</span><br><span class="line">        //公钥 可以自己生成</span><br><span class="line">        let cert = fs.readFileSync(path.join(__dirname, &quot;../pem/rsa_public_key.pem&quot;));</span><br><span class="line">        let res;</span><br><span class="line">        try &#123;</span><br><span class="line">            let result = jwt.verify(token, cert, &#123;algorithms: [&quot;RS256&quot;]&#125;) || &#123;&#125;;</span><br><span class="line">            let &#123;exp = 0&#125; = result, current = Math.floor(Date.now() / 1000);</span><br><span class="line">            if (current &lt;= exp) &#123;</span><br><span class="line">                res = result.data || &#123;&#125;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; catch (e) &#123;</span><br><span class="line">            res = &quot;err&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">module.exports = Jwt;</span><br></pre></td></tr></table></figure>
+
+<p>②.引入jwt.js,并根据登录请求返回token：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">const JwtUtil  = require(&quot;../common/jwt&quot;);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&quot;GET /api/signIn&quot;: async (ctx, next) =&gt; &#123;</span><br><span class="line">    const db = require(&quot;../db&quot;);</span><br><span class="line">    const model = require(&quot;./../model&quot;);</span><br><span class="line">    let parameter = &#123;&#125;;</span><br><span class="line">    ctx.request.querystring.replace(/([^=&amp;]+)=([^&amp;]*)/g, function(m,key,value) &#123;</span><br><span class="line">      parameter[decodeURIComponent(key)] = decodeURIComponent(value);</span><br><span class="line">    &#125;);</span><br><span class="line">    let result = await db.sequelize.query(&quot;SELECT * FROM mb_system_user WHERE user_name=&quot;111&quot; AND password=&quot;111&quot;&quot; , &#123;</span><br><span class="line">        type: db.sequelize.QueryTypes.SELECT</span><br><span class="line">      &#125;</span><br><span class="line">    ).then(function(results) &#123;</span><br><span class="line">      return results;</span><br><span class="line">    &#125;);</span><br><span class="line">    if(result.length &gt;= 1)&#123;</span><br><span class="line">      let jwt = new JwtUtil(result[0].userName);</span><br><span class="line">      let token = jwt.generateToken();</span><br><span class="line">      ctx.body = &#123; code: 0,data:result[0],access_token: token,&quot;msg&quot;: &quot;登入成功&quot;&#125;;</span><br><span class="line">    &#125;else&#123;</span><br><span class="line">      ctx.body = &#123; code: 500, msg: &quot;用户名或密码输入错误，请重新输入&quot; &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>③.请求时调用校验token是否有效接口：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&quot;GET /api/jiaoyan&quot;: async (ctx, next) =&gt; &#123;</span><br><span class="line">    let token = ctx.request.header.myblogtoken;</span><br><span class="line">    let jwt = new JwtUtil(token);</span><br><span class="line">    let jwtResult = jwt.verifyToken();</span><br><span class="line">    if (jwtResult == &quot;err&quot;) &#123;</span><br><span class="line">      ctx.body = &#123; code: 1001, msg: &quot;登录已过期,请重新登录&quot; &#125;;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">      ctx.body = &#123; code: 0&#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<h2 id="8-其他"><a href="#8-其他" class="headerlink" title="8.其他"></a>8.其他</h2><p>代码中运用到的公钥和私钥，可以查看这篇文章：</p>
+<p><a href="https://www.cnblogs.com/zhangjianqiang/p/10308029.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhangjianqiang/p/10308029.html</a></p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">罗彪的个人博客</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2019/12/18/%E5%89%8D%E7%AB%AF/2019/121801/" class="pre-post btn btn-default" title='js获取用户访问IP，城市，以及获取当前操作浏览器'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            js获取用户访问IP，城市，以及获取当前操作浏览器</span>
+    </a>
+    
+    
+    <a href="/2019/12/02/%E5%89%8D%E7%AB%AF/2019/120201/" class="next-post btn btn-default" title='微信小程序-计算用户离商家的距离'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            微信小程序-计算用户离商家的距离</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-引入依赖"><span class="toc-text">1.引入依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-生成token"><span class="toc-text">2.生成token</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-返回token到前端"><span class="toc-text">3.返回token到前端</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-前端接收token数据，并存入本地"><span class="toc-text">4.前端接收token数据，并存入本地</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-请求时携带token"><span class="toc-text">5.请求时携带token</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-nodejs校验前端返回token"><span class="toc-text">6.nodejs校验前端返回token</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-完整代码"><span class="toc-text">7.完整代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-其他"><span class="toc-text">8.其他</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+</body>
+</html>

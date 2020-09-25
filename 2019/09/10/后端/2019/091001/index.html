@@ -1,0 +1,302 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="referrer" content="no-referrer" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="我的个人博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="服务器" />
+
+
+<meta name="description" content="概述Linux中修改mysql密码的方法
+一.已知原始数据库密码的情况1.登录到mysqlmysql -uroot -p;  2.输入密码，回车3.进入mysql进入之前可以使用show dat..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    如何在 Linux中修改mysql密码 |
+    
+    我的个人博客
+</title>
+
+<link rel="alternate" href="/atom.xml" title="我的个人博客" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+</head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/bgImg.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='露馅的番茄'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!-- <h2 class="text-hide">罗彪的个人博客</h2> -->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        我的个人博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/"><i class="fa "></i>
+                                分类</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/tags/"><i class="fa "></i>
+                                标签</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/aboutMe/"><i class="fa "></i>
+                                关于我</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="如何在 Linux中修改mysql密码">
+            
+            如何在 Linux中修改mysql密码
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2019/09/10</span>
+    </span>
+    
+    
+</div>
+        
+        
+        <p class="fa fa-exclamation-triangle warning">
+            本文于<strong>
+                381</strong>
+            天之前发表，文中内容可能已经过时。
+        </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Linux中修改mysql密码的方法</p>
+<h2 id="一-已知原始数据库密码的情况"><a href="#一-已知原始数据库密码的情况" class="headerlink" title="一.已知原始数据库密码的情况"></a>一.已知原始数据库密码的情况</h2><h3 id="1-登录到mysql"><a href="#1-登录到mysql" class="headerlink" title="1.登录到mysql"></a>1.登录到mysql</h3><pre><code>mysql -uroot -p;  </code></pre><h3 id="2-输入密码，回车"><a href="#2-输入密码，回车" class="headerlink" title="2.输入密码，回车"></a>2.输入密码，回车</h3><h3 id="3-进入mysql"><a href="#3-进入mysql" class="headerlink" title="3.进入mysql"></a>3.进入mysql</h3><p>进入之前可以使用show databases;查看当前所有数据库；</p>
+<pre><code>use mysql;  </code></pre><h3 id="4-修改密码"><a href="#4-修改密码" class="headerlink" title="4.修改密码"></a>4.修改密码</h3><pre><code>update user set password=password(&quot;修改后的密码&quot;) where user=&quot;root&quot;;  </code></pre><h3 id="5-刷新权限："><a href="#5-刷新权限：" class="headerlink" title="5.刷新权限："></a>5.刷新权限：</h3><pre><code>flush privileges;  （重要，记得操作）</code></pre><h3 id="6-退出mysql："><a href="#6-退出mysql：" class="headerlink" title="6.退出mysql："></a>6.退出mysql：</h3><pre><code>exit;  </code></pre><h2 id="二-忘记root密码的情况"><a href="#二-忘记root密码的情况" class="headerlink" title="二.忘记root密码的情况"></a>二.忘记root密码的情况</h2><h3 id="1-首先，先停止mysql服务"><a href="#1-首先，先停止mysql服务" class="headerlink" title="1.首先，先停止mysql服务"></a>1.首先，先停止mysql服务</h3><pre><code>sudo service mysql stop;  </code></pre><h3 id="2-执行以下语句"><a href="#2-执行以下语句" class="headerlink" title="2.执行以下语句"></a>2.执行以下语句</h3><pre><code>sudo mysqld_safe --skip-grant-tables &amp;  </code></pre><h3 id="3-回车下一步"><a href="#3-回车下一步" class="headerlink" title="3.回车下一步"></a>3.回车下一步</h3><p>步骤2输入完之后，直接按回车后，输入mysql即可登录成功；</p>
+<h3 id="4-更新root密码"><a href="#4-更新root密码" class="headerlink" title="4.更新root密码"></a>4.更新root密码</h3><p>用use mysql关联要操作的数据库，按上面已知密码中步骤4的sql语句直接更新root密码即可：</p>
+<pre><code>update user set password=password(&quot;修改后的密码&quot;) where user=&quot;root&quot;;  </code></pre><h3 id="5-刷新权限：-1"><a href="#5-刷新权限：-1" class="headerlink" title="5.刷新权限："></a>5.刷新权限：</h3><pre><code>flush privileges;  （重要，记得操作）</code></pre><h3 id="6-退出mysql：-1"><a href="#6-退出mysql：-1" class="headerlink" title="6.退出mysql："></a>6.退出mysql：</h3><pre><code>exit;  </code></pre>
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">罗彪的个人博客</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2019/09/10/%E5%90%8E%E7%AB%AF/2019/091002/" class="pre-post btn btn-default" title='PM2简易使用手册'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            PM2简易使用手册</span>
+    </a>
+    
+    
+    <a href="/2019/08/22/%E5%89%8D%E7%AB%AF/2019/082201/" class="next-post btn btn-default" title='微信小程序-部分问题集锦'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            微信小程序-部分问题集锦</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一-已知原始数据库密码的情况"><span class="toc-text">一.已知原始数据库密码的情况</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-登录到mysql"><span class="toc-text">1.登录到mysql</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-输入密码，回车"><span class="toc-text">2.输入密码，回车</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-进入mysql"><span class="toc-text">3.进入mysql</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-修改密码"><span class="toc-text">4.修改密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-刷新权限："><span class="toc-text">5.刷新权限：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-退出mysql："><span class="toc-text">6.退出mysql：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-忘记root密码的情况"><span class="toc-text">二.忘记root密码的情况</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-首先，先停止mysql服务"><span class="toc-text">1.首先，先停止mysql服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-执行以下语句"><span class="toc-text">2.执行以下语句</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-回车下一步"><span class="toc-text">3.回车下一步</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-更新root密码"><span class="toc-text">4.更新root密码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-刷新权限：-1"><span class="toc-text">5.刷新权限：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-退出mysql：-1"><span class="toc-text">6.退出mysql：</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+</body>
+</html>

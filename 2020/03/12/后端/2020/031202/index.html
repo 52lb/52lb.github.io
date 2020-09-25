@@ -1,0 +1,332 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="referrer" content="no-referrer" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="我的个人博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="java" />
+
+
+<meta name="description" content="概述java学习笔记，教程:廖雪峰官方网站;
+Java开发，其实在安装好JDK后，就可以使用文本文档编辑，但是这样开发十分麻烦，效率极低。因此需要使用专门的开发工具，辅助我们快速、高效地开发代码..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    Java入坑02-eclipse安装及配置使用 |
+    
+    我的个人博客
+</title>
+
+<link rel="alternate" href="/atom.xml" title="我的个人博客" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+</head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/bgImg.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='露馅的番茄'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!-- <h2 class="text-hide">罗彪的个人博客</h2> -->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        我的个人博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/"><i class="fa "></i>
+                                分类</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/tags/"><i class="fa "></i>
+                                标签</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/aboutMe/"><i class="fa "></i>
+                                关于我</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="Java入坑02-eclipse安装及配置使用">
+            
+            Java入坑02-eclipse安装及配置使用
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/java/" rel="tag">java</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2020/03/12</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>java学习笔记，教程:廖雪峰官方网站;</p>
+<p>Java开发，其实在安装好JDK后，就可以使用文本文档编辑，但是这样开发十分麻烦，效率极低。因此需要使用专门的开发工具，辅助我们快速、高效地开发代码。目前比较流行的Java开发工具有三个：Eclipse、MyEclipse、IntelliJ IDEA。以下是Eclipse的安装和JDK的整合：</p>
+<h2 id="一-Eclipse的安装"><a href="#一-Eclipse的安装" class="headerlink" title="一.Eclipse的安装"></a>一.Eclipse的安装</h2><p>1.打开eclipse的官网：<a href="https://www.eclipse.org/downloads/packages/" target="_blank" rel="noopener">https://www.eclipse.org/downloads/packages/</a></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-2298ec226b4047d1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<p>点击Download下载：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-331acc696b35a038.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<p>下载完后点击安装：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-aa3e38553f41daf0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<h2 id="二-为Eclipse配置JDK"><a href="#二-为Eclipse配置JDK" class="headerlink" title="二.为Eclipse配置JDK"></a>二.为Eclipse配置JDK</h2><p>1、打开Eclipse，点击菜单栏Window下的Preferences。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-99af19b29c2ec649.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<p>2.点击Java–》Instralled JREs–》Add，选择默认standard VM–》next，选择JDK安装的位置，点击完成。最后点击Apply，完成JDK配置。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-3560f5c2413824f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<p>选择jdk所在文件夹:</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-69c6cf770a6c345b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<p>点击Apply，配置完成：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-4d0cf9ca2646fe93.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<h2 id="三-其他设置"><a href="#三-其他设置" class="headerlink" title="三.其他设置"></a>三.其他设置</h2><p>1.General –》 Editors –》 Text Editors：</p>
+<p>钩上“Show line numbers”，这样编辑器会显示行号；</p>
+<p>2.General –》 Workspace:</p>
+<p>钩上“Refresh using native hooks or polling”，这样Eclipse会自动刷新文件夹的改动；</p>
+<p>对于“Text file encoding”，如果Default不是UTF-8，一定要改为“Other：UTF-8”，所有文本文件均使用UTF-8编码；</p>
+<p>对于“New text file line delimiter”，建议使用Unix，即换行符使用\n而不是Windows的\r\n。</p>
+<p>3.Windows–》preferences–》Java–》Editor–》Content Assist</p>
+<p>在右边的“Auto activation triggers for Java”后的框中输入.qwertyuioplkjhgfdsazxcvbnm，点击OK。</p>
+<p>设置成功后可自动补全代码；</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-8df0eabb31f9d7dd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<h2 id="四-使用eclipse新建java项目"><a href="#四-使用eclipse新建java项目" class="headerlink" title="四.使用eclipse新建java项目"></a>四.使用eclipse新建java项目</h2><p>1.在Eclipse菜单选择File–》New–》Java Project，给项目命名，如HelloWord：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-7086d9ff2e3834ae.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-f9e5e594b28a3f89.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<p>点击“Finish”就成功创建了一个名为HelloWorld的Java工程。</p>
+<p>2.新建并运行HelloWorld：</p>
+<p>选中源码目录src，点击右键，在弹出菜单中选择New–》Class：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-4fb6e3729c35f7bc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<p>输入要输出的测试内容：System.out.println(“Hello Word”)，</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-fa779f18f6aedccc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<p>保存，然后选中文件Hello.java，点击右键，在弹出的菜单中选中Run As–》Java Application：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-1a8e018b6c0b3586.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<p>在Console窗口中就可以看到运行结果：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-aff6d170e1ec2845.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<p>如果没有在主界面中看到Console窗口，请选中菜单Window–》Show View–》Console，即可显示。</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">罗彪的个人博客</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2020/03/27/%E5%89%8D%E7%AB%AF/2020/032701/" class="pre-post btn btn-default" title='微信小程序-文章评论功能'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            微信小程序-文章评论功能</span>
+    </a>
+    
+    
+    <a href="/2020/03/12/%E5%90%8E%E7%AB%AF/2020/031203/" class="next-post btn btn-default" title='java入坑03-廖雪峰官网练习插件'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            java入坑03-廖雪峰官网练习插件</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一-Eclipse的安装"><span class="toc-text">一.Eclipse的安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-为Eclipse配置JDK"><span class="toc-text">二.为Eclipse配置JDK</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-其他设置"><span class="toc-text">三.其他设置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-使用eclipse新建java项目"><span class="toc-text">四.使用eclipse新建java项目</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+</body>
+</html>

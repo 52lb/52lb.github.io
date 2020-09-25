@@ -1,0 +1,345 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="referrer" content="no-referrer" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="我的个人博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="服务器" />
+
+
+<meta name="description" content="概述
+HTTPS，是以安全为目标的HTTP通道，简单讲是HTTP的安全版。即HTTP下加入SSL层，HTTPS的安全基础是SSL，因此加密的详细内容就需要SSL。
+http和https的区别就是..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    服务器-1.配置https |
+    
+    我的个人博客
+</title>
+
+<link rel="alternate" href="/atom.xml" title="我的个人博客" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+</head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/bgImg.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='露馅的番茄'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!-- <h2 class="text-hide">罗彪的个人博客</h2> -->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        我的个人博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/"><i class="fa "></i>
+                                分类</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/tags/"><i class="fa "></i>
+                                标签</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/aboutMe/"><i class="fa "></i>
+                                关于我</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="服务器-1.配置https">
+            
+            服务器-1.配置https
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2018/10/05</span>
+    </span>
+    
+    
+</div>
+        
+        
+        <p class="fa fa-exclamation-triangle warning">
+            本文于<strong>
+                721</strong>
+            天之前发表，文中内容可能已经过时。
+        </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
+<li>HTTPS，是以安全为目标的HTTP通道，简单讲是HTTP的安全版。即HTTP下加入SSL层，HTTPS的安全基础是SSL，因此加密的详细内容就需要SSL。</li>
+<li>http和https的区别就是，后者在网络传输过程中会很安全，原因就是给http安装了SSL证书。</li>
+</ul>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="一-开启nginx的ssl模块"><a href="#一-开启nginx的ssl模块" class="headerlink" title="一.开启nginx的ssl模块"></a>一.开启nginx的ssl模块</h3><p>1.切换到nginx安装目录:</p>
+<pre><code>cd /home/tool/nginx-1.14.0</code></pre><p>2.查看nginx原有的模块:</p>
+<pre><code>/usr/local/nginx/sbin/nginx -v</code></pre><p>3.重新配置:</p>
+<pre><code>./configure --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_ssl_module</code></pre><p>4.重新编译，不需要make  install安装。否则会覆盖:</p>
+<pre><code>make</code></pre><p>5.备份原有已装好的nginx:</p>
+<pre><code>cp /usr/local/nginx/sbin/nginx /usr/local/nginx/sbin/nginx.bak</code></pre><p>6.将刚刚编译好的nginx覆盖掉原来的nginx(ngixn必须停止):</p>
+<p>停止nginx：</p>
+<pre><code>cd /usr/local/nginx/sbin/
+
+./nginx -s stop
+
+cp ./objs/nginx /usr/local/nginx/sbin/</code></pre><p>这时，会提示是否覆盖，请输入yes，直接回车默认不覆盖</p>
+<p>7.启动nginx，查看nginx模块，发现已经添加:</p>
+<p>启动nginx：</p>
+<pre><code>sudo /usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf</code></pre><p>查看nginx模块：</p>
+<pre><code>/usr/local/nginx/sbin/nginx -V</code></pre><p>8.测试nginx是否正确:</p>
+<pre><code>/usr/local/nginx/sbin/nginx -t</code></pre><p>（成功：nginx: the configuration file /usr/local/nginx/conf/nginx.conf syntax is ok</p>
+<p>nginx: configuration file /usr/local/nginx/conf/nginx.conf test is successful）</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/12858218-6e8ac1714161d31e?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的个人博客图片">  </p>
+<p>出错解决方案：<a href="https://blog.csdn.net/u014227715/article/details/77649156" target="_blank" rel="noopener">https://blog.csdn.net/u014227715/article/details/77649156</a></p>
+<h3 id="二-配置https"><a href="#二-配置https" class="headerlink" title="二.配置https"></a>二.配置https</h3><p>因为我使用的是阿里云的服务器，所以需要在阿里云上下载证书，来配置https，为了安全；</p>
+<p>（参考链接：<a href="https://www.cnblogs.com/tianhei/p/7726505.html" target="_blank" rel="noopener">https://www.cnblogs.com/tianhei/p/7726505.html</a>）</p>
+<p>购买证书链接：<a href="https://common-buy.aliyun.com/?spm=5176.2020520154.0.0.33e956a7ViBGU7&commodityCode=cas#/buy" target="_blank" rel="noopener">https://common-buy.aliyun.com/?spm=5176.2020520154.0.0.33e956a7ViBGU7&amp;commodityCode=cas#/buy</a></p>
+<p>ssl证书安装指南：<a href="https://help.aliyun.com/knowledge_detail/95505.html?spm=5176.2020520154.0.0.45d3y7Iiy7Iidz" target="_blank" rel="noopener">https://help.aliyun.com/knowledge_detail/95505.html?spm=5176.2020520154.0.0.45d3y7Iiy7Iidz</a></p>
+<p>1.选择证书:</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/12858218-e615f2eedc495fe2?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的个人博客图片"></p>
+<p>2.申请证书:</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/12858218-7575d093b86b0624?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的个人博客图片"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/12858218-824dad00a1a9aeff?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的个人博客图片"></p>
+<p>3.下载证书上传到nginx文件夹中新建一个cert:</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/12858218-dbbf8db055a3a1f7?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的个人博客图片"></p>
+<p>4.配置文件：打开nginx的nginx.conf文件，输入以下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 443;</span><br><span class="line">    server_name www.btluo.com;//绑定的域名</span><br><span class="line">    ssl on;</span><br><span class="line">    root html;</span><br><span class="line">    index index.html index.htm;</span><br><span class="line">    ssl_certificate  /home/tool/nginx-1.14.0/cert/a.pem;</span><br><span class="line">    ssl_certificate_key  /home/tool/nginx-1.14.0/cert/a.key;</span><br><span class="line">    ssl_session_timeout 5m;</span><br><span class="line">    ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;</span><br><span class="line">    ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line">    ssl_prefer_server_ciphers on;</span><br><span class="line">    location / &#123;</span><br><span class="line">        root html;</span><br><span class="line">        index index.html index.htm;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>5.查看nginx配置是否正确:</p>
+<pre><code>/usr/local/nginx/sbin/nginx -t</code></pre><p>6.重启nginx：</p>
+<pre><code>/usr/local/nginx/sbin/nginx -s reload</code></pre><p>7.通过netstat -tnlp指令来查看开启的端口是否成功。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/12858218-806ea689b941f7f6?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的个人博客图片"></p>
+<p>8.访问页面：</p>
+<p><a href="https://www.btluo.com" target="_blank" rel="noopener">https://www.btluo.com</a></p>
+<p>注：小程序使用https时需要先加入白名单，在小程序的“设置-开发设置”中把域名加入进去：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/12858218-e03b321395f7e8de?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的个人博客图片"></p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">罗彪的个人博客</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2018/10/07/%E5%89%8D%E7%AB%AF/2018/100701/" class="pre-post btn btn-default" title='web前端页面优化方法'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            web前端页面优化方法</span>
+    </a>
+    
+    
+    <a href="/2018/10/05/%E5%90%8E%E7%AB%AF/2018/100502/" class="next-post btn btn-default" title='服务器-2.配置https遇到的问题'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            服务器-2.配置https遇到的问题</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一-开启nginx的ssl模块"><span class="toc-text">一.开启nginx的ssl模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二-配置https"><span class="toc-text">二.配置https</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+</body>
+</html>

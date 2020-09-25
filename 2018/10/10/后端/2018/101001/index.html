@@ -1,0 +1,343 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="referrer" content="no-referrer" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="我的个人博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="服务器" />
+
+
+<meta name="description" content="概述由于个人需求，需要建个个人博客，方便把遇到的问题和解决的过程，总结写成博客，所以买了个服务器和域名，开始搭建我的服务器；
+正文一.安装nginx参考链接：https://www.linuxi..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    服务器-搭建服务器 |
+    
+    我的个人博客
+</title>
+
+<link rel="alternate" href="/atom.xml" title="我的个人博客" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+</head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/bgImg.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='露馅的番茄'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!-- <h2 class="text-hide">罗彪的个人博客</h2> -->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        我的个人博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/"><i class="fa "></i>
+                                分类</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/tags/"><i class="fa "></i>
+                                标签</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/aboutMe/"><i class="fa "></i>
+                                关于我</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="服务器-搭建服务器">
+            
+            服务器-搭建服务器
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2018/10/10</span>
+    </span>
+    
+    
+</div>
+        
+        
+        <p class="fa fa-exclamation-triangle warning">
+            本文于<strong>
+                716</strong>
+            天之前发表，文中内容可能已经过时。
+        </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>由于个人需求，需要建个个人博客，方便把遇到的问题和解决的过程，总结写成博客，所以买了个服务器和域名，开始搭建我的服务器；</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="一-安装nginx"><a href="#一-安装nginx" class="headerlink" title="一.安装nginx"></a>一.安装nginx</h3><p>参考链接：<a href="https://www.linuxidc.com/Linux/2016-09/134907.htm" target="_blank" rel="noopener">https://www.linuxidc.com/Linux/2016-09/134907.htm</a>；</p>
+<p>1.安装gcc：</p>
+<pre><code>yum install gcc-c++</code></pre><p>2.安装PCRE pcre-devel：</p>
+<pre><code>yum install -y pcre pcre-devel</code></pre><p>3.安装zlib：</p>
+<pre><code>yum install -y zlib zlib-devel</code></pre><p>4.安装openssl：</p>
+<pre><code>yum install -y openssl openssl-devel</code></pre><p>5.官网下载nginx的.tar.gz安装包，地址：<a href="https://nginx.org/en/download.html" target="_blank" rel="noopener">https://nginx.org/en/download.html</a></p>
+<p>6.解压： </p>
+<pre><code>tar -zxvf nginx-1.14.0.tar.gz</code></pre><p>7.进去解压目录：</p>
+<pre><code>cd nginx-1.14.0</code></pre><p>8.使用默认配置：</p>
+<pre><code>./configure --prefix=/usr/local/nginx</code></pre><ol start="9">
+<li><p>编译安装：</p>
+<p> make</p>
+</li>
+</ol>
+<p>10.需要安装 libpcre3-dev,命令为：</p>
+<pre><code>sudo apt-get install libpcre3-dev</code></pre><ol start="11">
+<li><p>安装nginx：</p>
+<p>sudo make install</p>
+</li>
+</ol>
+<p>12.启动nginx：</p>
+<pre><code>sudo /usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf</code></pre><p>13.重启nginx：</p>
+<pre><code>/usr/local/nginx/sbin/nginx -s reload</code></pre><p>14.关闭nginx：</p>
+<pre><code>cd /usr/local/nginx/sbin/
+
+./nginx -s stop</code></pre><h3 id="二-安装node"><a href="#二-安装node" class="headerlink" title="二.安装node"></a>二.安装node</h3><p>参考链接：<a href="https://www.cnblogs.com/baby123/p/6955396.html" target="_blank" rel="noopener">https://www.cnblogs.com/baby123/p/6955396.html</a></p>
+<p>（下载node：<a href="https://nodejs.org/zh-cn/download/到服务器到/home/tool文件夹中）" target="_blank" rel="noopener">https://nodejs.org/zh-cn/download/到服务器到/home/tool文件夹中）</a></p>
+<p>1.解压： </p>
+<pre><code>tar -xvf node-v10.13.0.tar.gz</code></pre><p>2.进入解压目录，执行ls命令：</p>
+<pre><code>cd node-v10.13.0 &amp;&amp; ls</code></pre><p>3.测试node是否安装成功：</p>
+<pre><code>./node -v</code></pre><p>4.配置node全局配置：</p>
+<pre><code>ln -s /home/tool/node-v11.0.0-linux-x64/bin/node /usr/local/bin/node</code></pre><p>5.配置npm全局配置：</p>
+<pre><code>ln -s /home/tool/node-v11.0.0-linux-x64/bin/npm /usr/local/bin/npm</code></pre><p>（可以在任何目录下执行node和npm命令）</p>
+<p>6.查看环境变量：</p>
+<pre><code>echo $PATH</code></pre><p>（/usr/local/bin是环境变量PATH的内容，所以建立软链接后可以直接使用node命令）</p>
+<h3 id="三-安装mysql"><a href="#三-安装mysql" class="headerlink" title="三.安装mysql"></a>三.安装mysql</h3><p>参考链接：<a href="https://www.cnblogs.com/starof/p/4680083.html" target="_blank" rel="noopener">https://www.cnblogs.com/starof/p/4680083.html</a></p>
+<p>1.官网下载安装mysql-server</p>
+<pre><code>wget http://dev.mysql.com/get/mysql-community-release-el7-5.noarch.rpm
+
+rpm -ivh mysql-community-release-el7-5.noarch.rpm
+
+yum install mysql-community-server</code></pre><p>2.安装成功后重启mysql服务：</p>
+<pre><code>service mysqld restart</code></pre><p>3.初次安装mysql，root账户没有密码：</p>
+<pre><code>mysql -u root -p root</code></pre><p>4.设置密码：</p>
+<pre><code>mysql&gt; set password for</code></pre>
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">罗彪的个人博客</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2018/10/11/%E5%89%8D%E7%AB%AF/2018/101101/" class="pre-post btn btn-default" title='nodejs-请求体过大报413错误解决方法'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            nodejs-请求体过大报413错误解决方法</span>
+    </a>
+    
+    
+    <a href="/2018/10/07/%E5%89%8D%E7%AB%AF/2018/100701/" class="next-post btn btn-default" title='web前端页面优化方法'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            web前端页面优化方法</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一-安装nginx"><span class="toc-text">一.安装nginx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二-安装node"><span class="toc-text">二.安装node</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三-安装mysql"><span class="toc-text">三.安装mysql</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+</body>
+</html>

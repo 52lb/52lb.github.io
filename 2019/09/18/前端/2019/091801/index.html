@@ -1,0 +1,308 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="referrer" content="no-referrer" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="我的个人博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="小程序" />
+
+
+<meta name="description" content="概述一款实用的左右分类联动菜单-（即可左联动，也可右联动），收藏一下
+效果截图
+wxml代码123456789101112131415161718&lt;view class=&quot;men..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    微信小程序插件-分类demo |
+    
+    我的个人博客
+</title>
+
+<link rel="alternate" href="/atom.xml" title="我的个人博客" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+</head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/bgImg.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='露馅的番茄'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!-- <h2 class="text-hide">罗彪的个人博客</h2> -->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        我的个人博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/"><i class="fa "></i>
+                                分类</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/tags/"><i class="fa "></i>
+                                标签</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/aboutMe/"><i class="fa "></i>
+                                关于我</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="微信小程序插件-分类demo">
+            
+            微信小程序插件-分类demo
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2019/09/18</span>
+    </span>
+    
+    
+</div>
+        
+        
+        <p class="fa fa-exclamation-triangle warning">
+            本文于<strong>
+                373</strong>
+            天之前发表，文中内容可能已经过时。
+        </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>一款实用的左右分类联动菜单-（即可左联动，也可右联动），收藏一下</p>
+<h2 id="效果截图"><a href="#效果截图" class="headerlink" title="效果截图"></a>效果截图</h2><p><img src="https://upload-images.jianshu.io/upload_images/12858218-32cfdf040923c300.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<h2 id="wxml代码"><a href="#wxml代码" class="headerlink" title="wxml代码"></a>wxml代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&lt;view class=&quot;menuLeft&quot;&gt;</span><br><span class="line">    &lt;scroll-view class=&quot;leftScroll&quot; scroll-x=&quot;true&quot; scroll-y=&quot;true&quot; scroll-with-animation=&quot;true&quot; scroll-top=&quot;&#123;&#123;leftMenuTop&#125;&#125;&quot;&gt;</span><br><span class="line">        &lt;text class=&quot;menuItem &#123;&#123;index === currentActiveIndex ? &apos;menuActive&apos; : &apos;&apos;&#125;&#125;&quot; wx:for=&quot;&#123;&#123;navList&#125;&#125;&quot; wx:key=&quot;unique&quot; data-index=&quot;&#123;&#123;index&#125;&#125;&quot; id=&quot;&#123;&#123;index&#125;&#125;&quot; catchtap=&quot;changeMenu&quot;&gt;&#123;&#123;item.c_name&#125;&#125;&lt;/text&gt;</span><br><span class="line">    &lt;/scroll-view&gt;</span><br><span class="line">&lt;/view&gt;</span><br><span class="line">&lt;view class=&quot;menuRight&quot;&gt;</span><br><span class="line">    &lt;scroll-view class=&quot;rightScroll&quot; scroll-y=&quot;true&quot; scroll-with-animation=&quot;true&quot; scroll-top=&quot;&#123;&#123;rightProTop&#125;&#125;&quot; bindscroll=&quot;scroll&quot;&gt;</span><br><span class="line">        &lt;view class=&quot;pro-item&quot; wx:for=&quot;&#123;&#123;navList&#125;&#125;&quot; wx:key=&quot;unique&quot;&gt;</span><br><span class="line">            &lt;view class=&quot;classifyName&quot;&gt;&#123;&#123;item.c_name&#125;&#125;&lt;/view&gt;</span><br><span class="line">            &lt;view class=&quot;classifyListBox flex ac fwrap&quot;&gt;</span><br><span class="line">                &lt;view class=&quot;classifyList&quot; wx:for-item=&quot;items&quot; wx:for=&quot;&#123;&#123;item.list&#125;&#125;&quot; wx:key=&quot;unique&quot;&gt;</span><br><span class="line">                    &lt;image class=&quot;goodsImg&quot; src=&quot;&#123;&#123;items.url&#125;&#125;&quot;&gt;&lt;/image&gt;</span><br><span class="line">                    &lt;view class=&quot;goodsName&quot;&gt;&#123;&#123;items.goodsName&#125;&#125;&lt;/view&gt;</span><br><span class="line">                &lt;/view&gt;</span><br><span class="line">            &lt;/view&gt;</span><br><span class="line">        &lt;/view&gt;</span><br><span class="line">    &lt;/scroll-view&gt;</span><br><span class="line">&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="wxss代码"><a href="#wxss代码" class="headerlink" title="wxss代码"></a>wxss代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">page&#123;background-color: #f0f0f0;&#125;</span><br><span class="line">.menuLeft&#123;width: 180rpx;height: 100%;border-right: 1px solid #f5f5f5;position: fixed;background-color: #f5f5f5;top: 0;left: 0;&#125;</span><br><span class="line">.leftScroll&#123;width: 100%;height: 100%;&#125;</span><br><span class="line">.menuItem&#123;font-size: 26rpx;box-sizing: border-box;height: 100rpx;line-height: 100rpx;width: 180rpx;background-color: #fff;display: block;border-bottom: 1px solid #f5f5f5;position: relative;z-index: 10;text-align: center;&#125;</span><br><span class="line">.menuActive&#123;border-left: 10rpx solid #fd6631;background-color: #f0f0f0;&#125;</span><br><span class="line">.menuRight&#123;width: 570rpx;box-sizing: border-box;padding-left: 20rpx;padding-right: 20rpx;height: 100%;position: fixed;top: 0;right: 0;&#125;</span><br><span class="line">.rightScroll&#123;height: 100%;box-sizing: border-box;&#125;</span><br><span class="line">.classifyName&#123;height: 65rpx;line-height: 65rpx;font-size: 28rpx;font-weight: 700;&#125;</span><br><span class="line">.classifyListBox&#123;background-color: #fff;overflow: hidden;color: #fff;box-sizing: border-box;padding: 20rpx 0 0 0;&#125;</span><br><span class="line">.classifyList&#123;width: 170rpx;overflow: hidden;margin-right: 10rpx;float: left;&#125;</span><br><span class="line">.classifyListBox .classifyList:nth-child(3n)&#123;margin-right: 0rpx;&#125;</span><br><span class="line">.goodsImg&#123;display: block;width: 100rpx;height: 100rpx;margin: 0 auto;margin-bottom: 15rpx;&#125;</span><br><span class="line">.goodsName&#123;width: 100%;overflow: hidden;box-sizing: border-box;height: 42rpx;line-height: 42rpx;text-align: center;font-size: 24rpx;text-overflow: ellipsis;white-space: nowrap;color: #333;margin-bottom: 20rpx;&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="js代码"><a href="#js代码" class="headerlink" title="js代码"></a>js代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br></pre></td><td class="code"><pre><span class="line">// pages/classify/classify.js</span><br><span class="line">var app = getApp();</span><br><span class="line">//声明全局变量</span><br><span class="line">let proListToTop = [],</span><br><span class="line">    menuToTop = [],</span><br><span class="line">    MENU = 0,</span><br><span class="line">    windowHeight, timeoutId;</span><br><span class="line">// MENU ==&gt; 是否为点击左侧进行滚动的，如果是，则不需要再次设置左侧的激活状态</span><br><span class="line">Page(&#123;</span><br><span class="line">    data: &#123;</span><br><span class="line">        staticImg: app.globalData.staticImg,</span><br><span class="line">        currentActiveIndex: 0,</span><br><span class="line">        // 接口返回的商品数组</span><br><span class="line">        navList: [&#123;</span><br><span class="line">            c_id: &quot;01&quot;,</span><br><span class="line">            c_name: &quot;餐饮服务&quot;,</span><br><span class="line">            list: [&#123;</span><br><span class="line">                id: 1,</span><br><span class="line">                url: &quot;/images/1.jpg&quot;,</span><br><span class="line">                goodsName: &quot;分类&quot;,</span><br><span class="line">            &#125;</span><br><span class="line">            ]</span><br><span class="line">        &#125;,</span><br><span class="line">        &#123;</span><br><span class="line">            c_id: &quot;07&quot;,</span><br><span class="line">            c_name: &quot;医院药店&quot;,</span><br><span class="line">            list: [&#123;</span><br><span class="line">                id: 1,</span><br><span class="line">                url: &quot;/images/1.jpg&quot;,</span><br><span class="line">                goodsName: &quot;分类&quot;,</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                id: 2,</span><br><span class="line">                url: &quot;/images/1.jpg&quot;,</span><br><span class="line">                goodsName: &quot;分类&quot;,</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                id: 3,</span><br><span class="line">                url: &quot;/images/1.jpg&quot;,</span><br><span class="line">                goodsName: &quot;分类&quot;,</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                id: 4,</span><br><span class="line">                url: &quot;/images/1.jpg&quot;,</span><br><span class="line">                goodsName: &quot;分类&quot;,</span><br><span class="line">            &#125;,</span><br><span class="line">            &#123;</span><br><span class="line">                id: 5,</span><br><span class="line">                url: &quot;/images/1.jpg&quot;,</span><br><span class="line">                goodsName: &quot;分类&quot;,</span><br><span class="line">            &#125;,</span><br><span class="line">            ]</span><br><span class="line">        &#125;,</span><br><span class="line">        ],</span><br><span class="line">    &#125;,</span><br><span class="line">    onLoad: function (e) &#123;</span><br><span class="line">        // 确保页面数据已经刷新完毕~</span><br><span class="line">        setTimeout(() =&gt; &#123;</span><br><span class="line">            this.getAllRects()</span><br><span class="line">        &#125;, 20)</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    changeMenu(e) &#123;</span><br><span class="line">        console.log(proListToTop);</span><br><span class="line">        // 改变左侧tab栏操作</span><br><span class="line">        if (Number(e.target.id) === this.data.currentActiveIndex) return</span><br><span class="line">        MENU = 1</span><br><span class="line">        this.setData(&#123;</span><br><span class="line">            currentActiveIndex: Number(e.target.id),</span><br><span class="line">            rightProTop: proListToTop[Number(e.target.id)]</span><br><span class="line">        &#125;)</span><br><span class="line">        this.setMenuAnimation(Number(e.target.id))</span><br><span class="line">    &#125;,</span><br><span class="line">    scroll(e) &#123;</span><br><span class="line">        console.log(e);</span><br><span class="line">        for (let i = 0; i &lt; proListToTop.length; i++) &#123;</span><br><span class="line">            if (e.detail.scrollTop &lt; proListToTop[i] &amp;&amp; i !== 0 &amp;&amp; e.detail.scrollTop &gt; proListToTop[i - 1]) &#123;</span><br><span class="line">                return this.setDis(i)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        // 找不到匹配项，默认显示第一个数据</span><br><span class="line">        if (!MENU) &#123;</span><br><span class="line">            this.setData(&#123;</span><br><span class="line">                currentActiveIndex: 0</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">        MENU = 0</span><br><span class="line">    &#125;,</span><br><span class="line">    setDis(i) &#123;</span><br><span class="line">        // 设置左侧menu栏的选中状态</span><br><span class="line">        if (i !== this.data.currentActiveIndex + 1 &amp;&amp; !MENU) &#123;</span><br><span class="line">            this.setData(&#123;</span><br><span class="line">                currentActiveIndex: i - 1</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">        MENU = 0</span><br><span class="line">        this.setMenuAnimation(i)</span><br><span class="line">    &#125;,</span><br><span class="line">    setMenuAnimation(i) &#123;</span><br><span class="line">        // 设置动画，使menu滚动到指定位置。</span><br><span class="line">        let self = this</span><br><span class="line">        console.log(33)</span><br><span class="line">        if (menuToTop[i].animate) &#123;</span><br><span class="line">            console.log(11111)</span><br><span class="line">            // 节流操作</span><br><span class="line">            if (timeoutId) &#123;</span><br><span class="line">                clearTimeout(timeoutId)</span><br><span class="line">            &#125;</span><br><span class="line">            timeoutId = setTimeout(() =&gt; &#123;</span><br><span class="line">                console.log(12138)</span><br><span class="line">                self.setData(&#123;</span><br><span class="line">                    leftMenuTop: (menuToTop[i].top - windowHeight)</span><br><span class="line">                &#125;)</span><br><span class="line">            &#125;, 50)</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            console.log(11)</span><br><span class="line">            if (this.data.leftMenuTop === 0) return</span><br><span class="line">            console.log(22)</span><br><span class="line">            this.setData(&#123;</span><br><span class="line">                leftMenuTop: 0</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    getActiveReacts() &#123;</span><br><span class="line">        wx.createSelectorQuery().selectAll(&quot;.menuActive&quot;).boundingClientRect(function (rects) &#123;</span><br><span class="line">            return rects[0].top</span><br><span class="line">        &#125;).exec()</span><br><span class="line">    &#125;,</span><br><span class="line">    getAllRects() &#123;</span><br><span class="line"></span><br><span class="line">        // 获取商品数组的位置信息</span><br><span class="line">        wx.createSelectorQuery().selectAll(&quot;.pro-item&quot;).boundingClientRect(function (rects) &#123;</span><br><span class="line">            rects.forEach(function (rect) &#123;</span><br><span class="line">                console.log(rect)</span><br><span class="line">                // 这里减去44是根据你的滚动区域距离头部的高度，如果没有高度，可以将其删去</span><br><span class="line">                // proListToTop.push(rect.top - 44)</span><br><span class="line">                proListToTop.push(rect.top)</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;).exec()</span><br><span class="line"></span><br><span class="line">        // 获取menu数组的位置信息</span><br><span class="line">        wx.createSelectorQuery().selectAll(&quot;.menuItem&quot;).boundingClientRect(function (rects) &#123;</span><br><span class="line">            wx.getSystemInfo(&#123;</span><br><span class="line">                success: function (res) &#123;</span><br><span class="line">                    console.log(res);</span><br><span class="line">                    windowHeight = res.windowHeight / 2</span><br><span class="line">                    // console.log(windowHeight)</span><br><span class="line">                    rects.forEach(function (rect) &#123;</span><br><span class="line">                        menuToTop.push(&#123;</span><br><span class="line">                            top: rect.top,</span><br><span class="line">                            animate: rect.top &gt; windowHeight</span><br><span class="line">                        &#125;)</span><br><span class="line">                    &#125;)</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;).exec()</span><br><span class="line">    &#125;,</span><br><span class="line">    // 获取系统的高度信息</span><br><span class="line">    getSystemInfo() &#123;</span><br><span class="line">        let self = this</span><br><span class="line">        wx.getSystemInfo(&#123;</span><br><span class="line">            success: function (res) &#123;</span><br><span class="line">                windowHeight = res.windowHeight / 2</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>项目案例下载地址：<a href="https://gitee.com/caseAddress/wxminiDemo.git" target="_blank" rel="noopener">https://gitee.com/caseAddress/wxminiDemo.git</a> –其他小程序插件共用地址，持续更新中</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">罗彪的个人博客</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2019/09/19/%E5%89%8D%E7%AB%AF/2019/091902/" class="pre-post btn btn-default" title='微信小程序插件-多列表显示隐藏'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            微信小程序插件-多列表显示隐藏</span>
+    </a>
+    
+    
+    <a href="/2019/09/11/%E5%89%8D%E7%AB%AF/2019/091101/" class="next-post btn btn-default" title='vue-9.路由：登录状态的判断'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            vue-9.路由：登录状态的判断</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#效果截图"><span class="toc-text">效果截图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#wxml代码"><span class="toc-text">wxml代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#wxss代码"><span class="toc-text">wxss代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#js代码"><span class="toc-text">js代码</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+</body>
+</html>

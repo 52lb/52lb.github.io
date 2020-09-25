@@ -1,0 +1,436 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="referrer" content="no-referrer" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="我的个人博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="其他" />
+
+
+<meta name="description" content="概述代码编辑器的选择，可以说是开发者社区中一个经久不衰的话题，现今编辑器的数量数不胜数，vim,Emacs,Atom,sublime Text等等，那么对于一个开发者而言，挑选一个合适的编辑器是..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    VSCode前端开发利器 |
+    
+    我的个人博客
+</title>
+
+<link rel="alternate" href="/atom.xml" title="我的个人博客" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+</head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/bgImg.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='露馅的番茄'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!-- <h2 class="text-hide">罗彪的个人博客</h2> -->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        我的个人博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/"><i class="fa "></i>
+                                分类</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/tags/"><i class="fa "></i>
+                                标签</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/aboutMe/"><i class="fa "></i>
+                                关于我</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="VSCode前端开发利器">
+            
+            VSCode前端开发利器
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/IT/">IT</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/%E5%85%B6%E4%BB%96/" rel="tag">其他</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2018/10/28</span>
+    </span>
+    
+    
+</div>
+        
+        
+        <p class="fa fa-exclamation-triangle warning">
+            本文于<strong>
+                698</strong>
+            天之前发表，文中内容可能已经过时。
+        </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>代码编辑器的选择，可以说是开发者社区中一个经久不衰的话题，现今编辑器的数量数不胜数，vim,Emacs,Atom,sublime Text等等，那么对于一个开发者而言，挑选一个合适的编辑器是可以有效的提高编程效率；</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><h3 id="一-选择合适的编辑器，提高编程效率"><a href="#一-选择合适的编辑器，提高编程效率" class="headerlink" title="一.选择合适的编辑器，提高编程效率"></a>一.选择合适的编辑器，提高编程效率</h3><p><code>代码编辑器的选择，可以说是开发者社区中一个经久不衰的话题，现今编辑器的数量数不胜数，vim，sublime Text,Emacs,Atom等等，那么对于一个开发者而言，挑选一个合适的编辑器是可以有效的提高编程效率；</code></p>
+<p><strong>选择编辑器时，需要考虑的三个因素：</strong></p>
+<p>1.选择的编辑器对文本，代码的编程效率要求有多高；</p>
+<p>2.选择的编辑器对编程语音的支持如何，配置是否繁琐；</p>
+<p>3.选择的编辑器插件生态如何，社区是否活跃；</p>
+<blockquote>
+<p>VSCode：是一款免费的、开源的、高性能的、跨平台的、轻量级的代码编辑器，同时，在性能，语言支持、开源社区方面也做的很不错！</p>
+</blockquote>
+<h3 id="二-学编辑器，到底应该学什么"><a href="#二-学编辑器，到底应该学什么" class="headerlink" title="二.学编辑器，到底应该学什么"></a>二.学编辑器，到底应该学什么</h3><ul>
+<li><p>编辑器的学习就像编程语言的学习类似，一开始不熟悉的一门编程语言的时候，可能会从官方文档，从头到尾的学习这门语言的内容，但是学习过程中一些小小的语法就可能会影响你学习的进度，到之后你完全掌握这门语法的时候，你会发现开始学习时遇到的那点语法问题并不是那么的重要。</p>
+</li>
+<li><p>在掌握一门编程语言的时候，你想要学习另外一门编程语言，并且还是按照第一次的学习方式去学习这门语言，那么说明你并没有从全局理解这门语言，也没有再脑海中建立“学习框架”。</p>
+</li>
+<li><p>其实，一门新的编程语言往往是解决老语言的某个短板，但是他们的本质其实并没有多大的改变，如果你在学习第一门语言的时候能建立一套自己的“学习框架”，之后再学习一门新的语言的时候就会更有效率。</p>
+</li>
+<li><p>同时，学习编辑器的学习，也和编辑语言一样。当使用一个工具时，你最关心的应该是它能用来做什么，它擅长做什么，以及它不能做什么；换句话说，就是指这个工具的‘上限’和‘下限’</p>
+</li>
+</ul>
+<p><strong>首先，我们先找一下编辑器的‘下限’：</strong></p>
+<p>1.快捷键的选用：</p>
+<ul>
+<li><p>首先要考虑编辑器再选用快捷键的时候是否会与系统自带快捷键有所冲突；</p>
+</li>
+<li><p>其次，要参考其他开发工具对快捷键组合，迎合用户习惯；</p>
+</li>
+<li><p>最后，也是最重要的一点，我们要看快捷键的配置是否有统一性；</p>
+</li>
+</ul>
+<p><code>配置的统一性：Shift键只能用于控制文本选择，Ctrl或者Cmd键只能当做辅助键，Tab用于控件之间的跳转等。</code></p>
+<p>2.编程语言以及框架的支持：</p>
+<p>选择一个编辑器时，我们需要考虑的是它对你必须使用的编程语言的支持情况如何，语法高亮是否正确，是否能自动补全代码能否直接调试或运行测试等；</p>
+<p>3.对工作流的选择和支持</p>
+<blockquote>
+<p>（工作流：是对工作流程及其各操作步骤之间业务规则的抽象、概括描述。）</p>
+</blockquote>
+<p>最后一个影响因素，就是编辑器对工作流的选择和支持，比如说Vim编辑器（<a href="http://www.runoob.com/linux/linux-vim.html" target="_blank" rel="noopener" title="vim编辑器--菜鸟教程">http://www.runoob.com/linux/linux-vim.html</a>）并不自带资源管理器，如果你希望在Vim中看到文件树并快速切换文件就需要安装相应的插件；但是现在大多数的编辑器都直接集成了资源管理器，VSCode自带了版本管理，可以说是对版本管理在开发过程中的重要地位的一种认同，但是有些开发工具把测试功能集成进去，这个需求并不是所以人都认为是日常开发必要的；</p>
+<p><strong>接着，我们来说说编辑器的‘上限’：</strong></p>
+<ul>
+<li><p>如果说一款编辑器支持用户写插件来定制功能，那么它的‘上限’就很高了。像Eclipse这样允许修改任意功能的工具来说，它们的‘上限’理论就是无限的，但是扩展编辑器这个事，还是需要从社区和个人的，能否达到这个高度还是个未知数。</p>
+</li>
+<li><p>Eclipse是最流行的java编辑器之一，插件的开发语言也是java，所以它的插件社区还是很活跃的，但是Eclipse把插件运行到主程序中，一旦插件的性能堪忧，就会影响到Eclipse的本身体验。</p>
+</li>
+<li><p>VSCode的插件开发语言是JavaScript，所以写扩展对于很多人来说是没有门槛的，因为大多数人多少都会写点js，所以对于VSCode来说插件社区的活跃度还是不用担心的，主要是要考虑如何避免跳进Eclipse的坑里。</p>
+</li>
+<li><p>关于编辑器的‘上限’和‘下限’，其实就是我们再选择编辑器的时候所需要考虑的因素以及学习的方向，当然最重要的就是多动手；</p>
+</li>
+</ul>
+<h3 id="三-关于VSCode"><a href="#三-关于VSCode" class="headerlink" title="三.关于VSCode"></a>三.关于VSCode</h3><blockquote>
+<p>VSCode(Visual Studio Code):它是一个免费的，开源的跨平台编辑器。之所以强调‘编辑器’，可能是VSCode并无意成为一个全尺寸的集成开发环境，也就是IDE。它是由Erich Gamma把Monaco Editor移植到桌面平台上，成为了现今的VSCode。</p>
+</blockquote>
+<p>很多人都把编辑器等同于IDE，其实并非如此。IDE更为注重编程体验，对代码有很好的理解，同时侧重于为代码调试、测试等提供图形化界面的支持。因此，可能会显得比较笨重；</p>
+<p>而编辑器则相对更轻量，侧重文件或者文件夹，语言，工作流的支持更丰富和自由，VSCode的定位就是编辑器，但又并不局限于此。 </p>
+<p><strong>开源开发的平台</strong></p>
+<ul>
+<li><p>首先，<strong>VSCode</strong>的源代码以MIT协议（开源中国）开源，这就意味着我们可以免费获取VSCode的核心代码，社区可以基于VSCode的代码，开发自己的产品；而VSCode也经常能从一些知名的项目中吸取宝贵的经验。</p>
+</li>
+<li><p>其次，VSCode的源代码托管在GitHub上，同时使用GitHub的开发计划和测试，使每个用户都可以在GitHub上了解VSCode的开发进度，作为用户，可以更好的了解产品的发展情况。</p>
+</li>
+<li><p>再者，VSCode自带了TypeScript和Node.js的支持，用户下载VSCode后能立即获得javascript和nodejs的智能提示，且无需任何配置即可调试nodejs，然而VSCode的团队并不会精通所有的语言，那么对于他们不熟悉的语言，VSCode该怎么支持呢？最好的方法就是让专业的人来做，所以VSCode为编程工作者提供了统一的API（即Language Server Protocol和 Code Debugging Protocol），使得每一个语言都能得到更好的支持。</p>
+</li>
+</ul>
+<p><strong>VSCode学习指南</strong></p>
+<p>1.VSCode有一套自己的快捷键，你可以通过学习快捷键来了解核心编辑器所支持的功能。同时，VSCode允许自定义快捷键，使用户能更好的使用VSCode。VSCode对鼠标，多光标，搜索都有完备的支持，对自动补全，代码片段等都一应俱全。</p>
+<p>2.学会使用工作台，工作区，VSCode中除了编辑器区域，还有其他很多功能，像是资源管理器。跨文件搜索、插件管理等，它们就组成了统一的界面，就是工作台；这个工作台的设计代表了VSCode对工作流的选择。VSCode内置的软件版本管理，终端模拟器，调试器等，都能提高工作效率。</p>
+<p>3.VSCode允许定制和开发插件，所以试着把自己的想法，来满足自己的需求，能更好的提升自己，了解VSCode；</p>
+<p>4.关注每月的发布更新日志，关注VSCode官方博客；</p>
+<p>通过以上几个步骤，能更好的使用好VSCode，提高工作效率。</p>
+<p>总结：VSCode的定位是轻量级的代码编辑器，综合了Eclipse等许多优秀工具的优势，同时也解决了它们的弊端，VSCode在性能、语言支持、社区方面都很不错；</p>
+<p>VSCode更新日志：<a href="https://code.visualstudio.com/updates/v1_27" target="_blank" rel="noopener" title="VSCode更新日志">https://code.visualstudio.com/updates/v1_27</a></p>
+<p>VSCode官方博客：<a href="https://code.visualstudio.com/blogs/2018/09/12/engineering-with-azure-pipelines" target="_blank" rel="noopener" title="VSCode官方博客">https://code.visualstudio.com/blogs/2018/09/12/engineering-with-azure-pipelines</a></p>
+<p>VSCode社区：<a href="https://code.visualstudio.com/community" target="_blank" rel="noopener" title="VSCode社区">https://code.visualstudio.com/community</a></p>
+<h3 id="四-快速上手VSCode"><a href="#四-快速上手VSCode" class="headerlink" title="四.快速上手VSCode"></a>四.快速上手VSCode</h3><p><strong>安装与版本选择</strong></p>
+<p>VSCode有两个发布渠道，一个是常用的稳定版，每月发布一个主版本；另一个是insiders，每周一到周五早上6点发布，也是VSCode内部团队使用的版本，目的是为了更好的发现Bug。微软内部对这个做法还有个专门的名词：eat your own dog food(吃自己的狗粮)。</p>
+<p>VSCode目前在全世界大概有一万五千名用户在使用insiders版本。不过刚接触VSCode，稳定版会相对适合。但是如果已经使用VSCode一段时间的话，可以试一试insiders。因为使用这个版本可以尽早用上最新的功能，一般VSCode的新功能会先在insiders上线，等运行一段时间后才会随着当月稳定版发布。改动较大的可能会运行两个月之后才会推向稳定版。</p>
+<p>其次，一个新功能的添加往往是不成熟的，使用insiders可以第一时间在GitHub上反馈对新功能的看法及建议，甚至能为其提供代码。</p>
+<p><strong>下载安装VSCode</strong></p>
+<p>官网：<a href="https://code.visualstudio.com" target="_blank" rel="noopener" title="VSCode官网">https://code.visualstudio.com</a></p>
+<p><strong>初次使用VSCode</strong></p>
+<p>VSCode第一次启动的时候会显示一个‘欢迎使用’页，主要是为了方便快速打开文件，文件夹以及访问历史文件，更换主题色，更换快捷键等：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-a9fb3c89906d5dc7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="初次使用界面"></p>
+<p>这个界面有着很多你可能感兴趣的功能：</p>
+<p>1.命令面板：</p>
+<p>我们可以通过快捷键F1或者Ctrl+Shift+P（mac上的Cmd+Shift+P）键打开VSCode的命令面板。!</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-aae41b8bc251f8a1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="命令面板"></p>
+<p>VSCode的绝大部分命令都能从命令面板找到，所以只要熟悉命令面板，就能不用鼠标，完全使用键盘来完成编码工作。</p>
+<p>2.界面概览：</p>
+<p>展示VSCode默认界面里的不同部件的位置，名称和快捷键。VSCode强调无鼠标操作，但是记快捷键就会成为很多新手的痛点，这个界面恰好能解决这个痛点。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-a722423cc76b2afc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="界面概览"></p>
+<p>3.交互式演戏场：</p>
+<p>打开这个界面，我们会看到很多的英文教程，它通过各种交互实例，展示了一些高级编辑代码功能的使用，每个功能都会有一个代码片段和编辑器能供我们使用。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-e42184329a979329.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="交互式演戏场"></p>
+<h3 id="五-VSCode快捷键"><a href="#五-VSCode快捷键" class="headerlink" title="五.VSCode快捷键"></a>五.VSCode快捷键</h3><p><strong>光标移动</strong></p>
+<p>1.option + ← ：移动到单词最前面；</p>
+<p>2.option + → ：移动到单词最末尾； </p>
+<p>3.option + 方向键 ：以单词为单位移动；</p>
+<p>4.cmd + ← ：移动到当前行最前面；</p>
+<p>5.cmd + → ：移动到当前行最末尾；</p>
+<p>6.cmd + shift + \ ：花括号之间跳转；</p>
+<p>7.cmd + 上下键 ：移动到文档第一行或最后一行；</p>
+<p><strong>文本选择</strong></p>
+<p>基于单词，行，文档的光标操作加上个shift键，就可以移动光标的同时选择文本；</p>
+<p><strong>删除操作</strong></p>
+<p><code>删除当前选中文本内容（Windows：home+shift；macOS：cmd+left+shift）</code></p>
+<p>1.cmd + Backspace ：删除当前行光标后的所有字符；</p>
+<p>2.cmd + delete ：删除光标前的所有字符；</p>
+<p>3.option + delete ：把当前单词光标前的字符删除；</p>
+<p>4.option + Backspace ：删除当前单词光标后的字符；</p>
+<p><strong>自定义快捷键</strong></p>
+<p>打开命令面板（F1或ctrl+shift+p）搜索‘打开键盘快捷方式’，就可以更换或者删除快捷键；</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-3c55074b2beef304.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="自定义快捷键"></p>
+<h3 id="六-VSCode快捷键进阶"><a href="#六-VSCode快捷键进阶" class="headerlink" title="六.VSCode快捷键进阶"></a>六.VSCode快捷键进阶</h3><p>1.cmd + shfit + k :删除当前代码行；</p>
+<p>2.cmd + x ：剪切这行代码；</p>
+<p>3.cmd + Enter :在当前行的上面新增一行；</p>
+<p>4.option + ‘上下键’：将当前行或者当前选中的几行代码在编辑器中上下移动；</p>
+<p>5.option + shift +‘上下方向键’：向上向下复制当前行；</p>
+<p><code>移动代码行，代码缩进发生改变</code></p>
+<p><strong>添加注释</strong></p>
+<p>1.cmd + / ：注释一行代码；</p>
+<p>2.option + shift + A :注释一整段代码；</p>
+<p><strong>格式化代码</strong></p>
+<p>1.option + shift + F :格式化代码；</p>
+<p>2.cmd + K cmd + F :格式化选中行代码；</p>
+<p>3.cmd + shift + P ：代码缩进；</p>
+<h3 id="七-文件、符号、代码之间的快速跳转"><a href="#七-文件、符号、代码之间的快速跳转" class="headerlink" title="七.文件、符号、代码之间的快速跳转"></a>七.文件、符号、代码之间的快速跳转</h3><p>1.Ctrl + Tab(同时按住),继续按着Ctrl键，松开Tab键 :打开当前打开文件的列表，选择要打开文件，松开Ctrl就能打开对应文件；</p>
+<p>2.Ctrl + P :打开最近打开文件列表，同时列表顶部出现搜索框，搜索文件名，回车（Enter），可以在当前窗口打开对应文件；使用Cmd + Enter会在新的编辑器窗口打开这个文件。</p>
+<p>3.Ctrl + g :行跳转，输入对应数字回车，可以跳转到当前文件的当前行。</p>
+<p>4.Ctrl + p(输入文件名 + “：” + 行数)：跳转到指定文件的指定行数。 </p>
+<p>5.Cmd + shift + O :调出当前文件的符号（函数名等），使用方向键或者搜索，回车，就能跳转到你想要的符号；如果输入“：”可以对当前文件的所有符号进行分类；</p>
+<p>6.Ctrl + T ：打开多个文件，搜索多个文件中的符号；</p>
+<p>7.F12：跳转到函数的定义处；Cmd + F12 ：跳转到函数的实现位置；注：js中没有接口的概念，定义和实现是相同的，所以js中的F12和Cmd + F12效果是一样的；</p>
+<p>8.Shift + F12 ：打开函数引用的预览（把光标放在函数或者类上，按Shift+F12可以打开一个引用列表和内嵌编辑器）</p>
+<h3 id="八-VSCode中的鼠标操作"><a href="#八-VSCode中的鼠标操作" class="headerlink" title="八.VSCode中的鼠标操作"></a>八.VSCode中的鼠标操作</h3><p>1.在VSCode中，单击鼠标左键：把光标移动到相应的位置；双击鼠标左键：将当前光标下的单词选中；三击鼠标左键：选中当前行代码；四次点击鼠标左键：选中整个文档。</p>
+<p>2.鼠标左键单击行号：直接选中所在行；按住鼠标左键再行号上下移动：可以选中多行代码；</p>
+<p>3.拖动选中的代码，按住鼠标左键，移动鼠标可以改变代码位置；如果想在拖动时复制一份代码，可以按住Ctrl键，操作结果就能从原来的“剪切+复制”变成“复制+黏贴”。</p>
+<p>4.VSCode中，如果鼠标拥有中键，只需要按下鼠标中键，然后对着一段文档拖出一个框，再框中的代码就被选中了，而且每一行选中的代码，都有一个独立的光标。</p>
+<p>5.悬停提示窗口：当鼠标移动到某些文件上之后，一会就会显示跟鼠标下文本相关的信息；如果鼠标放在某个函数上，按下Ctrl时，则能在悬停提示的窗口上看到该函数的实现。</p>
+<p>6.代码的跳转和链接：如果我们把鼠标放在函数上时，函数下方会出现一个下划线，然后当我们按下鼠标左键时，就能跳转到该函数的定义处。</p>
+<p>当我们再编写Markdown这样的非编程语言的文档时，通过Ctrl+鼠标左键能打开超级链接。</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">罗彪的个人博客</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2018/11/01/IT/2018/110101/" class="pre-post btn btn-default" title='Nginx-虚拟目录alias和root的区别'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            Nginx-虚拟目录alias和root的区别</span>
+    </a>
+    
+    
+    <a href="/2018/10/25/%E5%89%8D%E7%AB%AF/2018/102501/" class="next-post btn btn-default" title='nodejs-登录注册小结'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            nodejs-登录注册小结</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一-选择合适的编辑器，提高编程效率"><span class="toc-text">一.选择合适的编辑器，提高编程效率</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二-学编辑器，到底应该学什么"><span class="toc-text">二.学编辑器，到底应该学什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三-关于VSCode"><span class="toc-text">三.关于VSCode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四-快速上手VSCode"><span class="toc-text">四.快速上手VSCode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五-VSCode快捷键"><span class="toc-text">五.VSCode快捷键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六-VSCode快捷键进阶"><span class="toc-text">六.VSCode快捷键进阶</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#七-文件、符号、代码之间的快速跳转"><span class="toc-text">七.文件、符号、代码之间的快速跳转</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#八-VSCode中的鼠标操作"><span class="toc-text">八.VSCode中的鼠标操作</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+</body>
+</html>

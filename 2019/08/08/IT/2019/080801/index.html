@@ -1,0 +1,582 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="referrer" content="no-referrer" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="我的个人博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="其他" />
+
+
+<meta name="description" content="概述程序员如何在日常工作中，更快更有效的提高工作效率-看下以下VSCode插件吧
+正文vscode提高效率有效使用插件
+
+
+
+插件名称
+说明
+
+
+
+wechat-snippet
+这个插件主要的功..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    VSCode-提高工作效率的有效插件 |
+    
+    我的个人博客
+</title>
+
+<link rel="alternate" href="/atom.xml" title="我的个人博客" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+</head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/bgImg.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='露馅的番茄'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!-- <h2 class="text-hide">罗彪的个人博客</h2> -->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        我的个人博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/"><i class="fa "></i>
+                                分类</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/tags/"><i class="fa "></i>
+                                标签</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/aboutMe/"><i class="fa "></i>
+                                关于我</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="VSCode-提高工作效率的有效插件">
+            
+            VSCode-提高工作效率的有效插件
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/IT/">IT</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/%E5%85%B6%E4%BB%96/" rel="tag">其他</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2019/08/08</span>
+    </span>
+    
+    
+</div>
+        
+        
+        <p class="fa fa-exclamation-triangle warning">
+            本文于<strong>
+                414</strong>
+            天之前发表，文中内容可能已经过时。
+        </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>程序员如何在日常工作中，更快更有效的提高工作效率-看下以下VSCode插件吧</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p><strong>vscode提高效率有效使用插件</strong></p>
+<table>
+<thead>
+<tr>
+<th>插件名称</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>wechat-snippet</td>
+<td>这个插件主要的功能就是代码辅助，代码片段自动完成，可以作为上个插件的补充。</td>
+</tr>
+<tr>
+<td>minapp</td>
+<td>支持微信小程序标签、属性的智能补全，并且提示中包含文档内容（同时支持原生小程序、mpvue 和 wepy 框架，并提供 snippets）。</td>
+</tr>
+<tr>
+<td>wxml</td>
+<td>这款插件用于将wxml代码进行高亮显示，并且提供代码格式化的功能，可将代码格式化为较易阅读的样式。</td>
+</tr>
+<tr>
+<td>vscode weapp api</td>
+<td>为 VSCode 提供微信小程序 API 提示及代码片段 。</td>
+</tr>
+<tr>
+<td>Auto Close Tag</td>
+<td>自动闭合HTML标签 。</td>
+</tr>
+<tr>
+<td>Auto Rename Tag</td>
+<td>修改HTML标签时，自动修改匹配的标签 。</td>
+</tr>
+<tr>
+<td>Color Highlight</td>
+<td>颜色值在代码中高亮显示。</td>
+</tr>
+<tr>
+<td>Color Picker</td>
+<td>拾色器。</td>
+</tr>
+<tr>
+<td>ESLint</td>
+<td>ESLint插件，高亮提示 。</td>
+</tr>
+<tr>
+<td>File Peek</td>
+<td>根据路径字符串，快速定位到文件 。</td>
+</tr>
+<tr>
+<td>vetur</td>
+<td>目前比较好的Vue语法高亮 。</td>
+</tr>
+<tr>
+<td>HTMLHintHTML</td>
+<td>格式提示 。</td>
+</tr>
+<tr>
+<td>JavaScript (ES6) code snippets</td>
+<td>ES6语法代码段 。</td>
+</tr>
+<tr>
+<td>markdownlint</td>
+<td>Markdown格式提示 。</td>
+</tr>
+<tr>
+<td>Prettify JSON</td>
+<td>格式化JSON。</td>
+</tr>
+<tr>
+<td>vscode-Document This</td>
+<td>jsdoc注释生成。</td>
+</tr>
+<tr>
+<td>vscode-eCSStractor</td>
+<td>抽取页面的class，生成一个css文档。</td>
+</tr>
+<tr>
+<td>vscode-CSS Peek</td>
+<td>class名字定义跳转。（终于拥有dw cc的这个css定义跳转功能）。</td>
+</tr>
+<tr>
+<td>vscode-Live Server</td>
+<td>http服务器（相当于使用nodejs的http-server ）。</td>
+</tr>
+<tr>
+<td>vscode-Change Case</td>
+<td>变量名命名风格切换。（解决了命名风格不统一的工具）。</td>
+</tr>
+<tr>
+<td>Bookmarks</td>
+<td>添加行书签 。</td>
+</tr>
+<tr>
+<td>Can I Use</td>
+<td>HTML5、CSS3、SVG的浏览器兼容性检查。</td>
+</tr>
+<tr>
+<td>Code Runner</td>
+<td>运行选中代码段（支持大量语言，包括Node）。</td>
+</tr>
+<tr>
+<td>CodeBing</td>
+<td>在VSCode中弹出浏览器并搜索，可编辑搜索引擎 。</td>
+</tr>
+<tr>
+<td>Document This</td>
+<td>注释文档生成。</td>
+</tr>
+<tr>
+<td>EditorConfig for VS Code</td>
+<td>EditorConfig插件。</td>
+</tr>
+<tr>
+<td>Emoji</td>
+<td>在代码中输入emoji 。</td>
+</tr>
+<tr>
+<td>Font-awesome codes for html</td>
+<td>FontAwesome提示代码段 。</td>
+</tr>
+<tr>
+<td>ftp-sync</td>
+<td>同步文件到ftp。</td>
+</tr>
+<tr>
+<td>Git Blame</td>
+<td>在状态栏显示当前行的Git信息。</td>
+</tr>
+<tr>
+<td>Git History(git log)</td>
+<td>查看git log 。</td>
+</tr>
+<tr>
+<td>GitLens</td>
+<td>显示文件最近的commit和作者，显示当前行commit信息。</td>
+</tr>
+<tr>
+<td>Guides</td>
+<td>高亮缩进基准线 。</td>
+</tr>
+<tr>
+<td>Gulp Snippets</td>
+<td>Gulp代码段 。</td>
+</tr>
+<tr>
+<td>HTML CSS Class Completion</td>
+<td>CSS class提示。</td>
+</tr>
+<tr>
+<td>HTML CSS Support</td>
+<td>Css提示（支持vue）。</td>
+</tr>
+<tr>
+<td>Indenticator</td>
+<td>缩进高亮 。</td>
+</tr>
+<tr>
+<td>language-stylus</td>
+<td>Stylus语法高亮和提示。</td>
+</tr>
+<tr>
+<td>Lodash</td>
+<td>Lodash代码段。</td>
+</tr>
+<tr>
+<td>MochaSnippets</td>
+<td>Mocha代码段 。</td>
+</tr>
+<tr>
+<td>Node modules resolve</td>
+<td>快速导航到Node模块。</td>
+</tr>
+<tr>
+<td>npm</td>
+<td>运行npm命令 。</td>
+</tr>
+<tr>
+<td>npm Intellisense</td>
+<td>导入模块时，提示已安装模块名称 。</td>
+</tr>
+<tr>
+<td>Output Colorizer</td>
+<td>彩色输出信息。</td>
+</tr>
+<tr>
+<td>Partial Diff</td>
+<td>对比两段代码或文件 。</td>
+</tr>
+<tr>
+<td>Path Autocomplete</td>
+<td>路径完成提示。</td>
+</tr>
+<tr>
+<td>Path Intellisense</td>
+<td>另一个路径完成提示。</td>
+</tr>
+<tr>
+<td>Project Manager</td>
+<td>快速切换项目。</td>
+</tr>
+<tr>
+<td>REST Client</td>
+<td>发送REST风格的HTTP请求。</td>
+</tr>
+<tr>
+<td>Settings Sync VSCode</td>
+<td>设置同步到Gist。</td>
+</tr>
+<tr>
+<td>String Manipulation</td>
+<td>字符串转换处理（驼峰、大写开头、下划线等等） 。</td>
+</tr>
+<tr>
+<td>Test Spec Generator</td>
+<td>测试用例生成（支持chai、should、jasmine）。</td>
+</tr>
+<tr>
+<td>TODO Parser</td>
+<td>Todo管理 。</td>
+</tr>
+<tr>
+<td>Version Lens</td>
+<td>package.json文件显示模块当前版本和最新版本。</td>
+</tr>
+<tr>
+<td>View Node Package</td>
+<td>快速打开选中模块的主页和代码仓库。</td>
+</tr>
+<tr>
+<td>vscode-icons</td>
+<td>文件图标，方便定位文件 。</td>
+</tr>
+<tr>
+<td>VSCode Great Icons</td>
+<td>文件图标拓展 。</td>
+</tr>
+<tr>
+<td>VueHelper</td>
+<td>Vue2代码段（包括Vue2 api、vue-router2、vuex2）。</td>
+</tr>
+<tr>
+<td>Quokka.js</td>
+<td>可以即时显示js和ts的运行结果，想试验一些短代码的运行结果，但是又不想之后删除文件的时候可以用到。</td>
+</tr>
+<tr>
+<td>codeRunner</td>
+<td>可以运行C, C++, Java, JavaScript, PHP, Python, Perl, Perl 6, Ruby, Go, Lua, Groovy, PowerShell, BAT/CMD, BASH/SH, F# Script, F# (.NET Core), C# Script,等开发语言并支持局部执行。</td>
+</tr>
+<tr>
+<td>IntelliSense for CSS class names</td>
+<td>智能提示 css 的 class 名</td>
+</tr>
+<tr>
+<td>Node.js Modules Intellisense</td>
+<td>可以在导入语句中自动完成JavaScript / TypeScript模块。</td>
+</tr>
+<tr>
+<td>vscode-faker</td>
+<td>生成假数据，地址，电话，图片等等。</td>
+</tr>
+<tr>
+<td>Regex Previewer</td>
+<td>测试正则的插件</td>
+</tr>
+<tr>
+<td>open in browser</td>
+<td>快速在浏览器中打开html文件（安装后，使用快捷键Alt+B）。</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">罗彪的个人博客</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2019/08/09/%E5%89%8D%E7%AB%AF/2019/080901/" class="pre-post btn btn-default" title='一个实用的jQuery拖放排序插件--DDSort'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            一个实用的jQuery拖放排序插件--DDSort</span>
+    </a>
+    
+    
+    <a href="/2019/08/02/%E5%89%8D%E7%AB%AF/2019/080201/" class="next-post btn btn-default" title='vue-基于vue-cli、elementUI的小案例'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            vue-基于vue-cli、elementUI的小案例</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-text">正文</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+</body>
+</html>

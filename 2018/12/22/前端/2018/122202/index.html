@@ -1,0 +1,325 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="referrer" content="no-referrer" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="我的个人博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="vue" />
+
+
+<meta name="description" content="概述vue的组件的功能：把页面抽象成多个相对独立的模块；实现代码重用，提高开发效率和代码质量，使得代码易于维护；
+正文案例链接：https://gitee.com/caseAddress/vue..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    vue-7.组件的创建及使用 |
+    
+    我的个人博客
+</title>
+
+<link rel="alternate" href="/atom.xml" title="我的个人博客" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+</head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/bgImg.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='露馅的番茄'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!-- <h2 class="text-hide">罗彪的个人博客</h2> -->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        我的个人博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/"><i class="fa "></i>
+                                分类</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/tags/"><i class="fa "></i>
+                                标签</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/aboutMe/"><i class="fa "></i>
+                                关于我</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="vue-7.组件的创建及使用">
+            
+            vue-7.组件的创建及使用
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/vue/" rel="tag">vue</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2018/12/22</span>
+    </span>
+    
+    
+</div>
+        
+        
+        <p class="fa fa-exclamation-triangle warning">
+            本文于<strong>
+                643</strong>
+            天之前发表，文中内容可能已经过时。
+        </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>vue的组件的功能：把页面抽象成多个相对独立的模块；实现代码重用，提高开发效率和代码质量，使得代码易于维护；</p>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>案例链接：<a href="https://gitee.com/caseAddress/vueDemo06.git" target="_blank" rel="noopener">https://gitee.com/caseAddress/vueDemo06.git</a></p>
+<h3 id="一-什么是组件"><a href="#一-什么是组件" class="headerlink" title="一.什么是组件"></a>一.什么是组件</h3><p><a href="https://cn.vuejs.org/v2/guide/components.html" target="_blank" rel="noopener">官方网址-组件详解</a></p>
+<p><strong>1.vue组件的定义</strong></p>
+<p>组件可以扩展HTML元素，封装可重用代码</p>
+<p>组件也是自定义元素，vue.js的编译器能为他添加特殊功能</p>
+<p>部分情况下，组件也可以表现用 is 特性进行了扩展的原生的HTML元素</p>
+<p>所有的vue组件同时也都是Vue实例，所以同样有template（html页面），script（js），style（样式），生命周期等；</p>
+<p><strong>2.vue组件的功能</strong></p>
+<p>能够把页面抽象成多个相对独立的模块；</p>
+<p>实现代码重用，提高开发效率和代码质量，使得代码易于维护；</p>
+<h3 id="二-创建组件"><a href="#二-创建组件" class="headerlink" title="二.创建组件"></a>二.创建组件</h3><p><img src="https://upload-images.jianshu.io/upload_images/12858218-f9b5554b77f95e7f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<h3 id="三-调用组件"><a href="#三-调用组件" class="headerlink" title="三.调用组件"></a>三.调用组件</h3><p><strong>比如添加一个Home组件：</strong></p>
+<p>步骤：</p>
+<p>1.在App.vue引入Home组件；</p>
+<p>2.挂载组件-名字可以随意取，但是不能重复，也不能跟html标签一样;挂载组件要使用components；</p>
+<p>3.在模板中使用组件；</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-4c3ca9f6ca23ebc7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<h3 id="四-案例效果"><a href="#四-案例效果" class="headerlink" title="四.案例效果"></a>四.案例效果</h3><p><img src="https://upload-images.jianshu.io/upload_images/12858218-f0a24a1bb2b70c17.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<p>同理，可以在App.vue挂载更多的组件，也可以在Home组件挂载其他组件；</p>
+<h3 id="五-最后"><a href="#五-最后" class="headerlink" title="五.最后"></a>五.最后</h3><p>上面案例中，我只想给Home中的h2添加背景色不想给App.vue或者其他组件的h2添加样式，那有以下解决方法：</p>
+<p>1.给Home组件最外层的div添加一个id，然后在样式的最外层添加id名，比如：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-e187f6b0b46c92c2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<p>2.在style中添加scoped（表示css的局部作用域）：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-6c5e75d8a48a0c5b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<p>这样显示的效果就只有Home组件中的H2添加背景色了：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-c88d744004a23dc3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">罗彪的个人博客</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2018/12/23/%E5%89%8D%E7%AB%AF/2018/122301/" class="pre-post btn btn-default" title='vue-8.生命周期钩子函数详解'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            vue-8.生命周期钩子函数详解</span>
+    </a>
+    
+    
+    <a href="/2018/12/22/%E5%89%8D%E7%AB%AF/2018/122201/" class="next-post btn btn-default" title='vue-6.事件结合双向绑定实现最简单版todolist'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            vue-6.事件结合双向绑定实现最简单版todolist</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正文"><span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#一-什么是组件"><span class="toc-text">一.什么是组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二-创建组件"><span class="toc-text">二.创建组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三-调用组件"><span class="toc-text">三.调用组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四-案例效果"><span class="toc-text">四.案例效果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五-最后"><span class="toc-text">五.最后</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+</body>
+</html>

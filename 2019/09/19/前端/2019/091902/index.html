@@ -1,0 +1,308 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="referrer" content="no-referrer" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="我的个人博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="小程序" />
+
+
+<meta name="description" content="概述实现单列表的显示和隐藏，通过wx:if判断就可实现，那么实现多列表的单项显示和隐藏功能应该如何实现呢？下面给大家带来了微信小程序之多列表的显示和隐藏功能。
+效果截图
+wxml代码123456..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    微信小程序插件-多列表显示隐藏 |
+    
+    我的个人博客
+</title>
+
+<link rel="alternate" href="/atom.xml" title="我的个人博客" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+</head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/bgImg.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='露馅的番茄'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!-- <h2 class="text-hide">罗彪的个人博客</h2> -->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        我的个人博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/"><i class="fa "></i>
+                                分类</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/tags/"><i class="fa "></i>
+                                标签</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/aboutMe/"><i class="fa "></i>
+                                关于我</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="微信小程序插件-多列表显示隐藏">
+            
+            微信小程序插件-多列表显示隐藏
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2019/09/19</span>
+    </span>
+    
+    
+</div>
+        
+        
+        <p class="fa fa-exclamation-triangle warning">
+            本文于<strong>
+                372</strong>
+            天之前发表，文中内容可能已经过时。
+        </p>
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>实现单列表的显示和隐藏，通过wx:if判断就可实现，那么实现多列表的单项显示和隐藏功能应该如何实现呢？下面给大家带来了微信小程序之多列表的显示和隐藏功能。</p>
+<h2 id="效果截图"><a href="#效果截图" class="headerlink" title="效果截图"></a>效果截图</h2><p><img src="https://upload-images.jianshu.io/upload_images/12858218-cacf525d0014bd29.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<h2 id="wxml代码"><a href="#wxml代码" class="headerlink" title="wxml代码"></a>wxml代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--pages/multiListShowHidden/multiListShowHidden.wxml--&gt;</span><br><span class="line">&lt;view class=&quot;container&quot;&gt;</span><br><span class="line">    &lt;view class=&quot;entryBox bgF5&quot;&gt;</span><br><span class="line">        &lt;view class=&quot;entryHead cMain f28&quot;&gt;请选择您要入驻的行业：&lt;/view&gt;</span><br><span class="line">        &lt;view class=&quot;entryBody&quot;&gt;</span><br><span class="line">            &lt;block wx:for-items=&quot;&#123;&#123;industryInfoData&#125;&#125;&quot;&gt;</span><br><span class="line">                &lt;view class=&quot;industryDad bgFFF flex ac jcs f32&quot;  bindtap=&quot;toggleBtn&quot; id=&quot;&#123;&#123;item.id&#125;&#125;&quot;&gt;</span><br><span class="line">                    &lt;view class=&quot;industryIcon flex ac&quot;&gt;</span><br><span class="line">                        &lt;image src=&quot;&#123;&#123;item.industryIcon&#125;&#125;&quot;&gt;&lt;/image&gt;</span><br><span class="line">                        &lt;view&gt;&#123;&#123;item.industryName&#125;&#125;&lt;/view&gt;</span><br><span class="line">                    &lt;/view&gt;</span><br><span class="line">                    &lt;view&gt;</span><br><span class="line">                        &lt;image src=&quot;/images/iconBottomArrow.png&quot; class=&quot;bottomArrow&quot; wx:if=&quot;&#123;&#123;uhide==item.id&#125;&#125;&quot;&gt;&lt;/image&gt;</span><br><span class="line">                        &lt;image src=&quot;/images/iconRightArrow.png&quot; class=&quot;rightArrow&quot; wx:else&gt;&lt;/image&gt;</span><br><span class="line">                    &lt;/view&gt;</span><br><span class="line">                &lt;/view&gt;</span><br><span class="line">                &lt;view class=&quot;industryChild flex ac f28&quot; wx:if=&quot;&#123;&#123;uhide==item.id&#125;&#125;&quot;&gt;</span><br><span class="line">                    &lt;view class=&quot;childItem tc &#123;&#123;childItem.cid == childActive?&quot;bgMain cfff&quot;:&quot;bgFFF&quot;&#125;&#125;&quot; data-cid=&quot;&#123;&#123;childItem.cid&#125;&#125;&quot; data-cname=&quot;&#123;&#123;childItem.cname&#125;&#125;&quot; bindtap=&quot;toSettledDetail&quot; wx:for=&quot;&#123;&#123;item.industryChild&#125;&#125;&quot; wx:for-item=&quot;childItem&quot; wx:key=&quot;*this&quot;&gt;</span><br><span class="line">                        &#123;&#123;childItem.cname&#125;&#125;</span><br><span class="line">                    &lt;/view&gt;</span><br><span class="line">                &lt;/view&gt;</span><br><span class="line">            &lt;/block&gt;</span><br><span class="line">        &lt;/view&gt;</span><br><span class="line">    &lt;/view&gt;</span><br><span class="line">&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="wxss代码"><a href="#wxss代码" class="headerlink" title="wxss代码"></a>wxss代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.entryBox&#123;width: 100%; min-height: 100vh; overflow: hidden;&#125;</span><br><span class="line">.entryHead&#123;width: 90%; padding: 40rpx 5%; box-sizing: border-box;&#125;</span><br><span class="line">.industryDad&#123;width: 100%; padding: 40rpx 5%; box-sizing: border-box; border-bottom: 1px solid #f5f5f5;&#125;</span><br><span class="line">.industryDad .industryIcon image&#123;width: 50rpx; height: 50rpx; margin-right: 20rpx;&#125;</span><br><span class="line">.industryChild&#123;width: 96%; margin: 20rpx 2%;&#125;</span><br><span class="line">.industryChild .childItem&#123;width: 28%; margin: 0 2%; padding: 15rpx 10rpx; overflow: hidden;white-space: nowrap;text-overflow: ellipsis;&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="js代码"><a href="#js代码" class="headerlink" title="js代码"></a>js代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">Page(&#123;</span><br><span class="line">    data: &#123;</span><br><span class="line">        uhide: 0,</span><br><span class="line">        industryInfoData: []</span><br><span class="line">    &#125;,</span><br><span class="line">    //切换隐藏和显示</span><br><span class="line">    toggleBtn: function(event) &#123;</span><br><span class="line">        var that = this;</span><br><span class="line">        var toggleBtnVal = that.data.uhide;</span><br><span class="line">        var itemId = event.currentTarget.id;</span><br><span class="line">        if (toggleBtnVal == itemId) &#123;</span><br><span class="line">            that.setData(&#123;</span><br><span class="line">                uhide: 0</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            that.setData(&#123;</span><br><span class="line">                uhide: itemId</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    onLoad: function(options) &#123;</span><br><span class="line">        var that = this;</span><br><span class="line">        var data = &#123;</span><br><span class="line">            &quot;datas&quot;: [</span><br><span class="line">                &#123;</span><br><span class="line">                    &quot;id&quot;: 1,</span><br><span class="line">                    &quot;industryIcon&quot;: &quot;/images/mineCollect.png&quot;,</span><br><span class="line">                    &quot;industryName&quot;: &quot;餐饮美食&quot;,</span><br><span class="line">                    &quot;industryChild&quot;: [</span><br><span class="line">                        &#123;</span><br><span class="line">                            &quot;cid&quot;: 1,</span><br><span class="line">                            &quot;cName&quot;: &quot;小吃快餐&quot;</span><br><span class="line">                        &#125;,</span><br><span class="line">                        &#123;</span><br><span class="line">                            &quot;cid&quot;: 2,</span><br><span class="line">                            &quot;cName&quot;: &quot;面包甜点&quot;</span><br><span class="line">                        &#125;,</span><br><span class="line">                        &#123;</span><br><span class="line">                            &quot;cid&quot;: 3,</span><br><span class="line">                            &quot;cName&quot;: &quot;自助餐&quot;</span><br><span class="line">                        &#125;</span><br><span class="line">                    ]</span><br><span class="line">                &#125;,</span><br><span class="line">                &#123;</span><br><span class="line">                    &quot;id&quot;: 2,</span><br><span class="line">                    &quot;industryIcon&quot;: &quot;/images/mineCollect.png&quot;,</span><br><span class="line">                    &quot;industryName&quot;: &quot;家政服务&quot;,</span><br><span class="line">                    &quot;industryChild&quot;: [</span><br><span class="line">                        &#123;</span><br><span class="line">                            &quot;cid&quot;: 1,</span><br><span class="line">                            &quot;cName&quot;: &quot;扫地&quot;</span><br><span class="line">                        &#125;,</span><br><span class="line">                        &#123;</span><br><span class="line">                            &quot;cid&quot;: 2,</span><br><span class="line">                            &quot;cName&quot;: &quot;洗衣服&quot;</span><br><span class="line">                        &#125;,</span><br><span class="line">                        &#123;</span><br><span class="line">                            &quot;cid&quot;: 3,</span><br><span class="line">                            &quot;cName&quot;: &quot;做饭&quot;</span><br><span class="line">                        &#125;</span><br><span class="line">                    ]</span><br><span class="line">                &#125;,</span><br><span class="line">            ]</span><br><span class="line">        &#125;;</span><br><span class="line">        that.setData(&#123;</span><br><span class="line">            industryInfoData: data.datas</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>项目案例下载地址：<a href="https://gitee.com/caseAddress/wxminiDemo.git" target="_blank" rel="noopener">https://gitee.com/caseAddress/wxminiDemo.git</a> –其他小程序插件共用地址，持续更新中</p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">罗彪的个人博客</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2019/09/19/%E5%89%8D%E7%AB%AF/2019/091901/" class="pre-post btn btn-default" title='微信小程序插件-多图上传demo'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            微信小程序插件-多图上传demo</span>
+    </a>
+    
+    
+    <a href="/2019/09/18/%E5%89%8D%E7%AB%AF/2019/091801/" class="next-post btn btn-default" title='微信小程序插件-分类demo'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            微信小程序插件-分类demo</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#效果截图"><span class="toc-text">效果截图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#wxml代码"><span class="toc-text">wxml代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#wxss代码"><span class="toc-text">wxss代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#js代码"><span class="toc-text">js代码</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+</body>
+</html>

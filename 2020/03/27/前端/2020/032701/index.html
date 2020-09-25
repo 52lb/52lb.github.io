@@ -1,0 +1,325 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="referrer" content="no-referrer" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="我的个人博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="小程序" />
+
+
+<meta name="description" content="概述在大部分博客网站中，评论功能是与博主沟通交流必不可少的功能，目前我的博客中的文章只提供了阅读功能，但是没有评论功能，因此我在闲暇时间，查阅资料并研究了一下评论功能，来完善一下我的小程序；
+一..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    微信小程序-文章评论功能 |
+    
+    我的个人博客
+</title>
+
+<link rel="alternate" href="/atom.xml" title="我的个人博客" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash">
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+</head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    /img/bgImg.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='露馅的番茄'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!-- <h2 class="text-hide">罗彪的个人博客</h2> -->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        我的个人博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                首页</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/"><i class="fa "></i>
+                                分类</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/tags/"><i class="fa "></i>
+                                标签</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/aboutMe/"><i class="fa "></i>
+                                关于我</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="微信小程序-文章评论功能">
+            
+            微信小程序-文章评论功能
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">小程序</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2020/03/27</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在大部分博客网站中，评论功能是与博主沟通交流必不可少的功能，目前我的博客中的文章只提供了阅读功能，但是没有评论功能，因此我在闲暇时间，查阅资料并研究了一下评论功能，来完善一下我的小程序；</p>
+<h2 id="一-简书前端界面分析"><a href="#一-简书前端界面分析" class="headerlink" title="一.简书前端界面分析"></a>一.简书前端界面分析</h2><p>首先我们先研究下简书的前端界面长什么样，知道了前端需要什么数据，我们在根据自己小程序的需求来设计数据库。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-b450816797ac90d6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<p>以简书为例，一个项目下面可能会有多条评论。但评论下面可能会有很多条的回复；我们先将简书下方的直接对文章的评论的称为父评论，每条父评论下方的回复称之为子评论；</p>
+<p>即简书的文章下可能有多个父评论，每个父评论下可能有多个子评论。他们之间都是一对多的关系；因此我们将评论表的字段设计为：</p>
+<p>主键ID（评论ID），blog_id(对应博客文章ID)，blog_type（因为我的博客技术文章和生活随笔文章放了两张不同的表，所以用来区别文章类型），wimini_user_id（评论用户ID，用来链接用户表获取对应的头像以及名称），reply_wxmini_id（回复者用户ID），pid（父级ID，根据pid找到对应的评论，pid为0代表父评论，其他则为对应pid的回复），praise（点赞数，暂时还没弄，先留着），content（评论内容），create_time（创建时间）；</p>
+<h2 id="二-创建数据库表"><a href="#二-创建数据库表" class="headerlink" title="二.创建数据库表"></a>二.创建数据库表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE `mb_comment` (</span><br><span class="line">  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT &apos;评论ID&apos;,</span><br><span class="line">  `blog_id` int(11) DEFAULT NULL COMMENT &apos;博客ID&apos;,</span><br><span class="line">  `blog_type` varchar(11) DEFAULT NULL COMMENT &apos;博客类型（0：技术文章，1：随笔文章）&apos;,</span><br><span class="line">  `wxmini_id` int(11) DEFAULT NULL COMMENT &apos;评论者微信用户ID&apos;,</span><br><span class="line">  `reply_wxmini_id` int(11) DEFAULT NULL COMMENT &apos;回复者微信用户ID&apos;,</span><br><span class="line">  `pid` int(11) DEFAULT NULL COMMENT &apos;父评论ID&apos;,</span><br><span class="line">  `content` varchar(256) DEFAULT NULL COMMENT &apos;评论内容&apos;,</span><br><span class="line">  `praise` int(64) DEFAULT &apos;0&apos; COMMENT &apos;点赞数&apos;,</span><br><span class="line">  `create_time` datetime NOT NULL COMMENT &apos;创建时间&apos;,</span><br><span class="line">  `createdAt` varchar(64) DEFAULT NULL COMMENT &apos;创建时间戳&apos;,</span><br><span class="line">  `updatedAt` varchar(64) DEFAULT NULL COMMENT &apos;更新时间戳&apos;,</span><br><span class="line">  `version` varchar(64) DEFAULT NULL COMMENT &apos;版本&apos;,</span><br><span class="line">  PRIMARY KEY (`id`)</span><br><span class="line">) ENGINE=InnoDB DEFAULT CHARSET=utf8;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-cc29db43bf4a5586.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<h2 id="三-后台接口返回数据"><a href="#三-后台接口返回数据" class="headerlink" title="三.后台接口返回数据"></a>三.后台接口返回数据</h2><p>1.数据库用的mySql，通过查询文章id来查找对应的评论，在通过用户id查询评论人信息，以及被回复人信息，先获取到当前所有评论包括回复信息：</p>
+<p>SELECT a.id,a.pid,a.blog_id blogId,a.wxmini_id wxminiId,b.user_name userName,b.img_url imgUrl,c.user_name reUserName,c.img_url reImgUrl,a.content,DATE_FORMAT(a.create_time,’%Y-%m-%d %T’) createTime FROM mb_comment a LEFT JOIN wxmini_user_info b ON  a.wxmini_id=b.id LEFT JOIN wxmini_user_info c ON  a.reply_wxmini_id=c.id WHERE a.blog_id = “ + 博客文章id + “ AND a.blog_type = “ + 文章类型</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-a3e556e7f19e86c2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<p>2.将返回的json数据中根据id=pid把回复对应到相应的评论中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var map = &#123;&#125;;</span><br><span class="line">result.forEach(function (item) &#123;</span><br><span class="line">    map[item.id] = item;</span><br><span class="line">&#125;);</span><br><span class="line">var resultList = [];</span><br><span class="line">result.forEach(function (item) &#123;</span><br><span class="line">    var parent = map[item.pid];</span><br><span class="line">    if (parent) &#123;</span><br><span class="line">        (parent.children || (parent.children = [])).push(item);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        resultList.push(item);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>3.编写接口：</p>
+<p>我的后台使用的是nodejs的koa2，因此结合上面获取内容获取文章评论接口如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">// 文章评论列表</span><br><span class="line">&quot;GET /api/wxmini/commentList&quot;: async (ctx, next) =&gt; &#123;</span><br><span class="line">    let parameter = &#123;&#125;;</span><br><span class="line">    ctx.request.querystring.replace(/([^=&amp;]+)=([^&amp;]*)/g, function(m,key,value) &#123;</span><br><span class="line">        parameter[decodeURIComponent(key)] = decodeURIComponent(value);</span><br><span class="line">    &#125;);</span><br><span class="line">    console.log(parameter);</span><br><span class="line">    // 本博客下所有评论回复</span><br><span class="line">    let result = await db.sequelize.query(&quot;SELECT a.id,a.pid,a.blog_id blogId,a.wxmini_id wxminiId,b.user_name userName,b.img_url imgUrl,c.user_name reUserName,c.img_url reImgUrl,a.content,DATE_FORMAT(a.create_time,&apos;%Y-%m-%d %T&apos;) createTime FROM mb_comment a LEFT JOIN wxmini_user_info b ON  a.wxmini_id=b.id LEFT JOIN wxmini_user_info c ON  a.reply_wxmini_id=c.id WHERE a.blog_id = &quot; + parameter.blogId + &quot; AND a.blog_type = &quot; + parameter.blogType, &#123;</span><br><span class="line">        type: db.sequelize.QueryTypes.SELECT</span><br><span class="line">        &#125;</span><br><span class="line">    ).then(function(results) &#123;</span><br><span class="line">        return results;</span><br><span class="line">    &#125;);</span><br><span class="line">    // 将回复对应到相应的评论中</span><br><span class="line">    var map = &#123;&#125;;</span><br><span class="line">    result.forEach(function (item) &#123;</span><br><span class="line">        map[item.id] = item;</span><br><span class="line">    &#125;);</span><br><span class="line">    var resultList = [];</span><br><span class="line">    result.forEach(function (item) &#123;</span><br><span class="line">        var parent = map[item.pid];</span><br><span class="line">        if (parent) &#123;</span><br><span class="line">            (parent.children || (parent.children = [])).push(item);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            resultList.push(item);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    ctx.body = &#123;</span><br><span class="line">        code: 0,</span><br><span class="line">        data: resultList</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+
+<p>返回接口如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-03c1909b9f699620.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<h2 id="四-前端页面展示"><a href="#四-前端页面展示" class="headerlink" title="四.前端页面展示"></a>四.前端页面展示</h2><p>1.wxml:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 新增评论 --&gt;</span><br><span class="line">&lt;view class=&quot;space&quot;&gt;&lt;/view&gt;</span><br><span class="line">&lt;view class=&quot;commentBox&quot;&gt;</span><br><span class="line">    &lt;view class=&quot;commentHead flex ac jcs&quot;&gt;</span><br><span class="line">        &lt;view class=&quot;f32 fwb&quot; wx:if=&quot;&#123;&#123;commentList.length &gt; 0&#125;&#125;&quot;&gt;评论(&#123;&#123;commentList.length&#125;&#125;)&lt;/view&gt;</span><br><span class="line">        &lt;view class=&quot;f32 fwb&quot; wx:else&gt;暂无评论&lt;/view&gt;</span><br><span class="line">        &lt;view class=&quot;f28 cMain flex ac&quot; bindtap=&quot;showCommentBox&quot; data-type=&quot;comment&quot;  data-wxminiid=&quot;0&quot; data-pid=&quot;0&quot; data-fidx=&quot;-1&quot;&gt;</span><br><span class="line">            &lt;image src=&quot;/img/iconEdit.png&quot;&gt;&lt;/image&gt;写评论</span><br><span class="line">        &lt;/view&gt;</span><br><span class="line">    &lt;/view&gt;</span><br><span class="line">    &lt;!-- 评论列表 --&gt;</span><br><span class="line">    &lt;view class=&quot;commentBody&quot; wx:if=&quot;&#123;&#123;commentList.length &gt; 0&#125;&#125;&quot; wx:for=&quot;&#123;&#123;commentList&#125;&#125;&quot;  wx:for-index=&quot;fidx&quot; wx:key=&quot;&#123;&#123;index&#125;&#125;&quot;&gt;</span><br><span class="line">        &lt;view class=&quot;commentList flex&quot;&gt;</span><br><span class="line">            &lt;view class=&quot;commentLeft&quot;&gt;</span><br><span class="line">                &lt;image src=&quot;&#123;&#123;item.imgUrl&#125;&#125;&quot;&gt;&lt;/image&gt;</span><br><span class="line">            &lt;/view&gt;</span><br><span class="line">            &lt;view class=&quot;commentRight&quot;&gt;</span><br><span class="line">                &lt;view class=&quot;rightDetail&quot;&gt;</span><br><span class="line">                    &lt;view class=&quot;f30 fwb&quot;&gt;&#123;&#123;item.userName&#125;&#125;&lt;/view&gt;</span><br><span class="line">                    &lt;view class=&quot;f30 c888 commentContent&quot;&gt;&#123;&#123;item.content&#125;&#125;&lt;/view&gt;</span><br><span class="line">                    &lt;view class=&quot;f28 c888 flex ac jcs&quot;&gt;</span><br><span class="line">                        &lt;view&gt;&#123;&#123;item.createTime&#125;&#125;&lt;/view&gt;</span><br><span class="line">                        &lt;view class=&quot;commentIcon&quot; bindtap=&quot;showCommentBox&quot; data-type=&quot;reply&quot; data-wxminiid=&quot;&#123;&#123;item.wxminiId&#125;&#125;&quot; data-pid=&quot;&#123;&#123;item.id&#125;&#125;&quot; data-username=&quot;&#123;&#123;item.userName&#125;&#125;&quot; data-fidx=&quot;&#123;&#123;fidx&#125;&#125;&quot;&gt;</span><br><span class="line">                            &lt;image src=&quot;/img/iconReply.png&quot;&gt;&lt;/image&gt;</span><br><span class="line">                            &lt;!-- &lt;image src=&quot;/img/iconReply.png&quot; class=&quot;iconReply&quot;&gt;&lt;/image&gt; --&gt;</span><br><span class="line">                            &lt;!-- &lt;image src=&quot;/img/iconPraise.png&quot;&gt;&lt;/image&gt; --&gt;</span><br><span class="line">                        &lt;/view&gt;</span><br><span class="line">                    &lt;/view&gt;</span><br><span class="line">                &lt;/view&gt;</span><br><span class="line">                &lt;!-- 回复列表 --&gt;</span><br><span class="line">                &lt;view class=&quot;replyList flex&quot; wx:if=&quot;&#123;&#123;idx &lt; (uhide==fidx?item.children.length:moreReplyMax)&#125;&#125;&quot; wx:for=&quot;&#123;&#123;item.children&#125;&#125;&quot; wx:for-index=&quot;idx&quot; wx:for-item=&quot;children&quot; wx:key=&quot;&#123;&#123;index&#125;&#125;&quot;&gt;</span><br><span class="line">                    &lt;view class=&quot;replyLeft&quot;&gt;</span><br><span class="line">                        &lt;image src=&quot;&#123;&#123;children.imgUrl&#125;&#125;&quot;&gt;&lt;/image&gt;</span><br><span class="line">                    &lt;/view&gt;</span><br><span class="line">                    &lt;view class=&quot;replyRight&quot;&gt;</span><br><span class="line">                        &lt;view class=&quot;f30 fwb&quot;&gt;&#123;&#123;children.userName&#125;&#125;&lt;/view&gt;</span><br><span class="line">                        &lt;view class=&quot;f30 c888 replyContent&quot;&gt;</span><br><span class="line">                            &lt;text class=&quot;cBlue&quot;&gt;@&#123;&#123;children.reUserName&#125;&#125;&lt;/text&gt;&#123;&#123;children.content&#125;&#125;</span><br><span class="line">                        &lt;/view&gt;</span><br><span class="line">                        &lt;view class=&quot;f28 c888 flex ac&quot;&gt;</span><br><span class="line">                            &lt;view class=&quot;time&quot;&gt;&#123;&#123;children.createTime&#125;&#125;&lt;/view&gt;</span><br><span class="line">                            &lt;view bindtap=&quot;showCommentBox&quot; data-type=&quot;reply&quot; data-wxminiid=&quot;&#123;&#123;children.wxminiId&#125;&#125;&quot; data-pid=&quot;&#123;&#123;children.pid&#125;&#125;&quot; data-username=&quot;&#123;&#123;children.userName&#125;&#125;&quot; data-fidx=&quot;&#123;&#123;fidx&#125;&#125;&quot;&gt;回复&lt;/view&gt;</span><br><span class="line">                        &lt;/view&gt;</span><br><span class="line">                    &lt;/view&gt;</span><br><span class="line">                &lt;/view&gt;</span><br><span class="line">                &lt;!-- 点击查看更多回复 --&gt;</span><br><span class="line">                &lt;view class=&quot;moreReply flex ac&quot; wx:if=&quot;&#123;&#123;item.children.length&gt;(uhide==fidx?item.children.length:moreReplyMax)&#125;&#125;&quot;&gt;</span><br><span class="line">                    &lt;view&gt;&lt;image src=&quot;/img/read.png&quot;&gt;&lt;/image&gt;&lt;/view&gt;</span><br><span class="line">                    &lt;view class=&quot;f28 c888&quot;&gt;还有&#123;&#123;item.children.length - moreReplyMax&#125;&#125;条评论，&lt;/view&gt;</span><br><span class="line">                    &lt;view class=&quot;f28 cBlue&quot; bindtap=&quot;toggleMoreReply&quot; data-fidx=&quot;&#123;&#123;fidx&#125;&#125;&quot;&gt;点击查看更多&lt;/view&gt;</span><br><span class="line">                &lt;/view&gt;</span><br><span class="line">            &lt;/view&gt;</span><br><span class="line">        &lt;/view&gt;</span><br><span class="line">    &lt;/view&gt;</span><br><span class="line">    &lt;!-- 没有更多评论了 --&gt;</span><br><span class="line">    &lt;view class=&quot;commentNoMore tc&quot; wx:if=&quot;&#123;&#123;commentList.length &gt; 0&#125;&#125;&quot;&gt;没有更多评论了~&lt;/view&gt;</span><br><span class="line">    &lt;!-- 暂无评论 --&gt;</span><br><span class="line">    &lt;view wx:if=&quot;&#123;&#123;commentList.length == 0&#125;&#125;&quot; class=&quot;noComment tc&quot;&gt;</span><br><span class="line">        &lt;image src=&quot;/img/iconCommentNo.png&quot;&gt;&lt;/image&gt;</span><br><span class="line">        &lt;view&gt;来都来了，不想&lt;text class=&quot;cBlue&quot; bindtap=&quot;showCommentBox&quot; data-type=&quot;comment&quot;  data-wxminiid=&quot;0&quot; data-pid=&quot;0&quot; data-fidx=&quot;-1&quot;&gt;说一些什么&lt;/text&gt;咩~&lt;/view&gt;</span><br><span class="line">    &lt;/view&gt;</span><br><span class="line">&lt;/view&gt;</span><br><span class="line">&lt;view class=&quot;space&quot;&gt;&lt;/view&gt;</span><br><span class="line">&lt;!-- 写评论 --&gt;</span><br><span class="line">&lt;view class=&quot;addCBox&quot; wx:if=&quot;&#123;&#123;editComment&#125;&#125;&quot;&gt;</span><br><span class="line">    &lt;view class=&quot;addCBg&quot;&gt;&lt;/view&gt;</span><br><span class="line">    &lt;view class=&quot;addCBody bgFFF&quot;&gt;</span><br><span class="line">        &lt;view class=&quot;addContent&quot;&gt;</span><br><span class="line">            &lt;textarea placeholder=&quot;&#123;&#123;contentTip&#125;&#125;&quot; maxlength=&quot;-1&quot; bindinput=&quot;getCommentContent&quot; value=&quot;&#123;&#123;content&#125;&#125;&quot;&gt;&lt;/textarea&gt;</span><br><span class="line">        &lt;/view&gt;</span><br><span class="line">        &lt;view class=&quot;operation flex ac &quot;&gt;</span><br><span class="line">            &lt;view class=&quot;cancel bgF0 c888&quot; bindtap=&quot;hideCommentBox&quot;&gt;取消&lt;/view&gt;</span><br><span class="line">            &lt;view class=&quot;bgMain cfff&quot; bindtap=&quot;addNewComment&quot;&gt;确认&lt;/view&gt;</span><br><span class="line">        &lt;/view&gt;</span><br><span class="line">    &lt;/view&gt;</span><br><span class="line">&lt;/view&gt;</span><br></pre></td></tr></table></figure>
+
+<p>2.wxss:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">/* 新增评论 */</span><br><span class="line">.commentBox&#123;width: 92%;margin: 0 auto;margin-top: 40rpx;&#125;</span><br><span class="line">.commentBox .commentHead image&#123;width: 30rpx; height: 30rpx; margin-right: 10rpx;&#125;</span><br><span class="line">.commentBox .commentBody&#123;width: 100%;overflow: hidden; margin: 30rpx 0;border-top: 1px solid #e6e6e6;padding-top: 30rpx;&#125;</span><br><span class="line">.commentBox .commentBody .commentList .commentLeft&#123;width: 15%;&#125;</span><br><span class="line">.commentBox .commentBody .commentList .commentLeft image&#123;width: 64rpx; height: 64rpx;&#125;</span><br><span class="line">.commentBox .commentBody .commentList .commentRight&#123;width: 85%;&#125;</span><br><span class="line">.commentBox .commentBody .commentList .commentRight .commentContent&#123;margin: 20rpx 0;&#125;</span><br><span class="line">.commentBox .commentBody .commentList .commentRight .commentIcon image&#123;width: 40rpx; height: 40rpx;&#125;</span><br><span class="line">.commentBox .commentBody .commentList .commentRight .commentIcon .iconReply&#123;margin-right: 40rpx;&#125;</span><br><span class="line">.commentBox .commentBody .commentList .commentRight .replyList&#123;width: 100%; overflow: hidden; margin-top: 30rpx; padding: 30rpx 0; border-top: 1px solid #e6e6e6;&#125;</span><br><span class="line">.commentBox .commentBody .commentList .commentRight .replyList .replyLeft&#123;width: 15%;&#125;</span><br><span class="line">.commentBox .commentBody .commentList .commentRight .replyList .replyLeft image&#123;width: 50rpx; height: 50rpx;&#125;</span><br><span class="line">.commentBox .commentBody .commentList .commentRight .replyList .replyRight&#123;width: 85%;&#125;</span><br><span class="line">.commentBox .commentBody .commentList .commentRight .replyList .replyRight .replyContent&#123;margin: 20rpx 0;line-height: 50rpx;&#125;</span><br><span class="line">.commentBox .commentBody .commentList .commentRight .replyList .replyRight .replyContent text&#123;margin-right: 20rpx;&#125;</span><br><span class="line">.commentBox .commentBody .commentList .commentRight .replyList .replyRight .time&#123;margin-right: 20rpx;&#125;</span><br><span class="line">/* 更多回复 */</span><br><span class="line">.commentBox .commentBody .commentList .commentRight .moreReply&#123;width: 100%;overflow: hidden;padding-top: 30rpx;border-top: 1px solid #e6e6e6;&#125;</span><br><span class="line">.commentBox .commentBody .commentList .commentRight .moreReply image&#123;width: 32rpx;height: 32rpx;margin-right: 10rpx;&#125;</span><br><span class="line">/* 没有更多评论了 */</span><br><span class="line">.commentBox .commentNoMore&#123;width: 100%;overflow: hidden;padding: 30rpx 0;border-top: 1px solid #e6e6e6;&#125;</span><br><span class="line">/* 暂无评论 */</span><br><span class="line">.commentBox .noComment&#123;width: 100%;overflow: hidden;padding: 100rpx 0;&#125;</span><br><span class="line">.commentBox .noComment image&#123;width: 350rpx;height: 150rpx;margin-bottom: 50rpx;&#125;</span><br><span class="line">/* 写评论 */</span><br><span class="line">.addCBox&#123;position: fixed; top: 0; left: 0; background: rgba(0, 0, 0, 0.7); width: 100%; z-index: 1001; height: 100vh;&#125;</span><br><span class="line">.addCBox .addCBg&#123;position: absolute; top: 0; left: 0; width: 100%; z-index: 1; height: 100vh;&#125;</span><br><span class="line">.addCBox .addCBody&#123;width: 100%;position: relative;z-index: 10;&#125;</span><br><span class="line">.addCBox .addCBody .addContent&#123;width: 100%;padding: 20rpx;box-sizing: border-box;&#125;</span><br><span class="line">.addCBox .addCBody .addContent textarea&#123;width: 100%;&#125;</span><br><span class="line">.addCBox .addCBody .operation&#123;width: 100%;padding: 30rpx 20rpx;justify-content: flex-end;&#125;</span><br><span class="line">.addCBox .addCBody .operation&gt;view&#123;padding: 10rpx 30rpx;border-radius: 10rpx;&#125;</span><br><span class="line">.addCBox .addCBody .operation .cancel&#123;margin-right: 20rpx;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>3.js:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br></pre></td><td class="code"><pre><span class="line">var util = require(&apos;../../utils/util.js&apos;);</span><br><span class="line">var api = require(&apos;../../config/api.js&apos;);</span><br><span class="line">var app = getApp();</span><br><span class="line">Page(&#123;</span><br><span class="line">    /**</span><br><span class="line">    * commentList:评论列表</span><br><span class="line">    * content:评论内容</span><br><span class="line">    * contentTip:评论内容提示</span><br><span class="line">    * commentType:评论类型：comment-评论，reply-回复</span><br><span class="line">    * rWxminiId:被回复人用户id</span><br><span class="line">    * pid:评论id</span><br><span class="line">    * uhide:当前展开更多回复id</span><br><span class="line">    * moreReply:是否显示更多回复</span><br><span class="line">    * moreReplyMax：默认显示回复数</span><br><span class="line">    */</span><br><span class="line">    data: &#123;</span><br><span class="line">        commentList: [],</span><br><span class="line">        content: &quot;&quot;,</span><br><span class="line">        contentTip: &quot;请输入您的评论内容&quot;,</span><br><span class="line">        commentType: &quot;comment&quot;,</span><br><span class="line">        rWxminiId: 0,</span><br><span class="line">        pid: 0,</span><br><span class="line">        uhide: null,</span><br><span class="line">        moreReply: false,</span><br><span class="line">        moreReplyMax: 2</span><br><span class="line">    &#125;,</span><br><span class="line">    //点击切换隐藏和显示更多回复</span><br><span class="line">    toggleMoreReply: function (e) &#123;</span><br><span class="line">        var that = this;</span><br><span class="line">        var fidx = e.currentTarget.dataset.fidx;</span><br><span class="line">        that.setData(&#123;</span><br><span class="line">            uhide: fidx</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">    // 显示写评论窗口</span><br><span class="line">    showCommentBox: function (e) &#123;</span><br><span class="line">        let that = this</span><br><span class="line">            , contentTip = &quot;请输入您的评论内容&quot;</span><br><span class="line">            , fidx = e.currentTarget.dataset.fidx</span><br><span class="line">            , commentType = e.currentTarget.dataset.type</span><br><span class="line">            , rWxminiId = e.currentTarget.dataset.wxminiid</span><br><span class="line">            , pid = e.currentTarget.dataset.pid;</span><br><span class="line">        if (commentType == &quot;reply&quot;) &#123;</span><br><span class="line">            contentTip = &quot;@&quot; + e.currentTarget.dataset.username;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            contentTip = &quot;请输入您的评论内容&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        that.setData(&#123;</span><br><span class="line">            editComment: true,</span><br><span class="line">            uhide: fidx,</span><br><span class="line">            commentType: commentType,</span><br><span class="line">            rWxminiId: rWxminiId,</span><br><span class="line">            pid: pid,</span><br><span class="line">            contentTip: contentTip</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">    // 隐藏评论窗口</span><br><span class="line">    hideCommentBox: function (e) &#123;</span><br><span class="line">        let that = this;</span><br><span class="line">        that.setData(&#123;</span><br><span class="line">            editComment: false</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">    // 获取输入的评论内容</span><br><span class="line">    getCommentContent: function (e) &#123;</span><br><span class="line">        let content = e.detail.value;</span><br><span class="line">        this.setData(&#123;</span><br><span class="line">            content: content</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">    // 获取评论列表GetCommentList</span><br><span class="line">    getCommentList: function () &#123;</span><br><span class="line">        let that = this</span><br><span class="line">            , blogId = this.data.diaryId;</span><br><span class="line">        util.request(api.GetCommentList, &#123; blogId: blogId, blogType: 1 &#125;).then(res =&gt; &#123;</span><br><span class="line">            if (res.code == 0) &#123;</span><br><span class="line">                that.setData(&#123;</span><br><span class="line">                    commentList: res.data</span><br><span class="line">                &#125;)</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                console.log(&quot;获取评论失败&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;,</span><br><span class="line">    // 获取评论数据</span><br><span class="line">    addNewComment: function () &#123;</span><br><span class="line">        let data = &#123;</span><br><span class="line">            blogId: this.data.diaryId,</span><br><span class="line">            blogType: 1,</span><br><span class="line">            wxminiId: parseInt(wx.getStorageSync(&quot;wxminiId&quot;)),</span><br><span class="line">            rWxminiId: this.data.rWxminiId,</span><br><span class="line">            pid: this.data.pid,</span><br><span class="line">            content: this.data.content,</span><br><span class="line">        &#125;;</span><br><span class="line">        this.saveComment(data);</span><br><span class="line">    &#125;,</span><br><span class="line">    // 评论回复请求</span><br><span class="line">    saveComment: function (data) &#123;</span><br><span class="line">        let that = this</span><br><span class="line">            , isLogin = this.data.isLogin;</span><br><span class="line">        if (data.content == &quot;&quot;) &#123;</span><br><span class="line">            util.showErrorModal(&quot;请输入评论内容哦！&quot;);</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">        if (isLogin &amp;&amp; wx.getStorageSync(&quot;wxminiId&quot;)) &#123;</span><br><span class="line">            wx.showLoading(&#123; title: &apos;加载中...&apos;, mask: true &#125;);</span><br><span class="line">            util.request(api.SaveComment, data, &apos;POST&apos;).then(res =&gt; &#123;</span><br><span class="line">                wx.hideLoading();</span><br><span class="line">                if (res.code == 0) &#123;</span><br><span class="line">                    wx.showToast(&#123; title: &apos;评论成功&apos; &#125;)</span><br><span class="line">                    that.setData(&#123;</span><br><span class="line">                        editComment: false,</span><br><span class="line">                        content: &quot;&quot;</span><br><span class="line">                    &#125;)</span><br><span class="line">                    that.getCommentList();</span><br><span class="line">                &#125; else &#123;</span><br><span class="line">                    util.showErrorModal(res.msg);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            wx.showModal(&#123;</span><br><span class="line">                title: &apos;温馨提示！&apos;,</span><br><span class="line">                content: &apos;骚瑞哦，授权后才能评论哦~&apos;,</span><br><span class="line">                confirmText: &quot;去授权&quot;,</span><br><span class="line">                success(res) &#123;</span><br><span class="line">                    if (res.confirm) &#123;</span><br><span class="line">                        wx.navigateTo(&#123;</span><br><span class="line">                            url: &apos;/pages/authorization/authorization&apos;,</span><br><span class="line">                        &#125;)</span><br><span class="line">                    &#125; else if (res.cancel) &#123;</span><br><span class="line">                        console.log(&apos;用户点击取消&apos;)</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">            return false;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    onLoad: function (options) &#123;</span><br><span class="line">        var scene = decodeURIComponent(options.scene);</span><br><span class="line">        if (scene != undefined &amp;&amp; scene != &quot;undefined&quot; &amp;&amp; scene != &quot;&quot;) &#123;</span><br><span class="line">            this.setData(&#123;</span><br><span class="line">                diaryId: scene</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            this.setData(&#123;</span><br><span class="line">                diaryId: options.diaryId</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        this.getCommentList();</span><br><span class="line">    &#125;,</span><br><span class="line">    onShow: function () &#123;</span><br><span class="line">        // 查看是否登录，用于授权</span><br><span class="line">        let isLogin = wx.getStorageSync(&quot;isLogin&quot;);</span><br><span class="line">        if (isLogin) &#123;</span><br><span class="line">            this.setData(&#123;</span><br><span class="line">                isLogin: isLogin</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            this.setData(&#123;</span><br><span class="line">                isLogin: false</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    onPullDownRefresh: function () &#123;</span><br><span class="line">        wx.showNavigationBarLoading() //在标题栏中显示加载</span><br><span class="line">        this.getCommentList();</span><br><span class="line">        wx.hideNavigationBarLoading() //完成停止加载</span><br><span class="line">        wx.stopPullDownRefresh() //停止下拉刷新</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<h2 id="页面展示"><a href="#页面展示" class="headerlink" title="页面展示"></a>页面展示</h2><p><img src="https://upload-images.jianshu.io/upload_images/12858218-dbf4d934069eff5c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-7a4babb70bf8e43f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/12858218-6bce93e9834326fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="我的博客图片"></p>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">罗彪的个人博客</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2020/03/27/%E5%89%8D%E7%AB%AF/2020/032702/" class="pre-post btn btn-default" title='如何在mysql中存emoji表情？'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            如何在mysql中存emoji表情？</span>
+    </a>
+    
+    
+    <a href="/2020/03/12/%E5%90%8E%E7%AB%AF/2020/031202/" class="next-post btn btn-default" title='Java入坑02-eclipse安装及配置使用'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            Java入坑02-eclipse安装及配置使用</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'zh-CN'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            文章目录
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一-简书前端界面分析"><span class="toc-text">一.简书前端界面分析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#二-创建数据库表"><span class="toc-text">二.创建数据库表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#三-后台接口返回数据"><span class="toc-text">三.后台接口返回数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#四-前端页面展示"><span class="toc-text">四.前端页面展示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#页面展示"><span class="toc-text">页面展示</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="/js/app.js?rev=@@hash"></script>
+</body>
+</html>
